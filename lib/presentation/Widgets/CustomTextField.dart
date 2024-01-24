@@ -2,7 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:green_control/util/AppColors.dart';
 
 class CustomTextField extends StatelessWidget {
-  const CustomTextField({super.key});
+  const CustomTextField({super.key, required this.hintText, required this.labelText, required this.controller});
+
+
+  final String hintText;
+  final String labelText;
+  final TextEditingController controller;
 
   @override
   Widget build(BuildContext context) {
@@ -26,11 +31,12 @@ class CustomTextField extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Text('Email', style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
+            Text(labelText, style: const TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
             TextField(
+              controller: controller,
               decoration: InputDecoration(
                   border: InputBorder.none,
-                  hintText: 'abdramanovkuanys@gmail.com',
+                  hintText: hintText,
                   hintStyle: TextStyle(
                       color: AppColors.greyColor,
                       fontSize: 16

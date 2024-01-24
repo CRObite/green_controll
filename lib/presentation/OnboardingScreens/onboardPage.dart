@@ -46,12 +46,14 @@ class _OnBoardPageState extends State<OnBoardPage> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             currentOnBoardPage < 2 ? TextButton(
-                onPressed: (){},
+                onPressed: (){
+                  _pageController.animateToPage(2, duration: const Duration(milliseconds: 300), curve: Curves.easeIn);
+                },
                 child: Text(
                   AppText.skip,
                   style: TextStyle(color:AppColors.darkGreenColor, fontSize: 24),
                 )
-            ): const SizedBox(width: 16,),
+            ): const SizedBox(width: 90,),
 
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -77,6 +79,8 @@ class _OnBoardPageState extends State<OnBoardPage> {
                       _pageController.animateToPage(currentOnBoardPage,
                           duration: const Duration(milliseconds: 300), curve: Curves.ease);
                     });
+                  }else{
+                    Navigator.pushReplacementNamed(context, '/');
                   }
                 },
                 child: Text(

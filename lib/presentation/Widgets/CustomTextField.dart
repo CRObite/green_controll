@@ -1,13 +1,22 @@
 import 'package:flutter/material.dart';
-import 'package:green_control/util/AppColors.dart';
 
-class CustomTextField extends StatelessWidget {
-  const CustomTextField({super.key, required this.hintText, required this.labelText, required this.controller});
+import '../../util/AppColors.dart';
+
+class CustomTextField extends StatefulWidget {
+  const CustomTextField({super.key, required this.type, required this.hintText, required this.labelText, required this.controller});
 
 
+  final TextInputType type;
   final String hintText;
   final String labelText;
   final TextEditingController controller;
+
+  @override
+  State<CustomTextField> createState() => _CustomTextFieldState();
+}
+
+class _CustomTextFieldState extends State<CustomTextField> {
+  bool obscureText = true;
 
   @override
   Widget build(BuildContext context) {
@@ -19,10 +28,10 @@ class CustomTextField extends StatelessWidget {
         ),
         boxShadow: [
           BoxShadow(
-            color: Colors.grey.withOpacity(0.5),
-            spreadRadius: 2,
-            blurRadius: 5,
-            offset: const Offset(0, 3), // changes position of shadow
+            color: Colors.grey.withOpacity(0.3),
+            spreadRadius: 1,
+            blurRadius: 3,
+            offset: const Offset(0, 2),
           ),
         ],
       ),
@@ -31,16 +40,38 @@ class CustomTextField extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(labelText, style: const TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
+            Text(
+              widget.labelText,
+              style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+            ),
             TextField(
-              controller: controller,
+              controller: widget.controller,
+              obscureText: widget.type == TextInputType.visiblePassword
+                  ? obscureText
+                  : false,
               decoration: InputDecoration(
-                  border: InputBorder.none,
-                  hintText: hintText,
-                  hintStyle: TextStyle(
-                      color: AppColors.greyColor,
-                      fontSize: 16
-                  )
+                border: InputBorder.none,
+                hintText: widget.hintText,
+                hintStyle: TextStyle(
+                  color: AppColors.greyColor,
+                  fontSize: 16,
+                ),
+                suffixIcon: widget.type == TextInputType.visiblePassword
+                    ? IconButton(
+                  icon: Icon(
+                    obscureText
+                        ? Icons.visibility
+                        : Icons.visibility_off,
+
+                    color: AppColors.greyColor,
+                  ),
+                  onPressed: () {
+                    setState(() {
+                      obscureText = !obscureText;
+                    });
+                  },
+                )
+                    : null,
               ),
             ),
           ],

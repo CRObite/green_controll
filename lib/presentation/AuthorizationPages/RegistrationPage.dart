@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:green_control/presentation/Widgets/CustomTextField.dart';
-import 'package:green_control/util/AppColors.dart';
-import 'package:green_control/util/AppImage.dart';
-import 'package:green_control/util/AppText.dart';
 
-class LoginPage extends StatefulWidget {
-  const LoginPage({super.key});
+import '../../util/AppColors.dart';
+
+class RegistrationPage extends StatefulWidget {
+  const RegistrationPage({super.key});
 
   @override
-  State<LoginPage> createState() => _LoginPageState();
+  State<RegistrationPage> createState() => _RegistrationPageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
-
+class _RegistrationPageState extends State<RegistrationPage> {
   TextEditingController emailController = TextEditingController();
+  TextEditingController nameController = TextEditingController();
+  TextEditingController confirmController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
 
   @override
@@ -29,33 +29,23 @@ class _LoginPageState extends State<LoginPage> {
           ),
           child: Column(
             children: [
-              SizedBox(
-                height: 300,
+              const SizedBox(
+                height: 150,
                 width: double.infinity,
                 child: Center(
-                  child: Row(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      SizedBox(
-                        width: 80,
-                        child: Image.asset(AppImage.logo),
-                      ),
-                      const SizedBox(width: 16,),
-                      SizedBox(
-                        width: 150,
-                        child: Text(AppText.greenControl, style: const TextStyle(fontSize: 32, color: Colors.white)),
-                      ),
-                    ],
+                  child: SizedBox(
+                    width: 150,
+                    child: Text('Sign Up', style: TextStyle(fontSize: 32, color: Colors.white)),
                   ),
                 ),
               ),
 
               Container(
-                height: MediaQuery.of(context).size.height - 300,
+                height: MediaQuery.of(context).size.height - 150,
                 decoration: const BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(50.0),
+                    topRight: Radius.circular(50.0),
                   ),
                 ),
                 child: Padding(
@@ -69,9 +59,12 @@ class _LoginPageState extends State<LoginPage> {
                         children: [
 
                           const SizedBox(height: 50,),
-
-                          const Text('Login', style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold)),
-                          const SizedBox(height: 32,),
+                          CustomTextField(
+                            hintText: 'CRObite',
+                            labelText: 'Name or Nickname',
+                            controller: nameController,
+                            type: TextInputType.text,),
+                          const SizedBox(height: 16,),
                           CustomTextField(
                             hintText: 'appUser@gmail.com',
                             labelText: 'Email',
@@ -81,6 +74,13 @@ class _LoginPageState extends State<LoginPage> {
                           CustomTextField(
                             controller: passwordController,
                             labelText: 'Password',
+                            hintText: 'qwerty1234',
+                            type:  TextInputType.visiblePassword,
+                          ),
+                          const SizedBox(height: 16,),
+                          CustomTextField(
+                            controller: confirmController,
+                            labelText: 'Confirm Password',
                             hintText: 'qwerty1234',
                             type:  TextInputType.visiblePassword,
                           ),
@@ -96,23 +96,8 @@ class _LoginPageState extends State<LoginPage> {
                                 ),
                               ),
                             ),
-                            child: const Text('Login', style: TextStyle(color: Colors.white, fontSize: 16)),
+                            child: const Text('Register', style: TextStyle(color: Colors.white, fontSize: 16)),
                           ),
-                          const SizedBox(height: 16,),
-                          Row(
-
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Text('Forgot your password?' , style: TextStyle( color: AppColors.greyColor,),),
-                              const SizedBox(width: 8,),
-                              GestureDetector(
-                                  onTap: (){
-                                    Navigator.pushNamed(context, '/recover');
-                                  },
-                                  child: const Text('Recover password', style: TextStyle(fontWeight: FontWeight.bold),)
-                              ),
-                            ],
-                          )
                         ],
                       ),
 
@@ -120,13 +105,13 @@ class _LoginPageState extends State<LoginPage> {
 
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Text('Don\'t have any account' , style: TextStyle( color: AppColors.greyColor,),),
+                          Text('Already have any account' , style: TextStyle( color: AppColors.greyColor,),),
                           const SizedBox(width: 8,),
                           GestureDetector(
                               onTap: (){
-                                Navigator.pushReplacementNamed(context, '/registration');
+                                Navigator.pushReplacementNamed(context, '/');
                               },
-                              child: const Text('Sign Up', style: TextStyle(fontWeight: FontWeight.bold),)
+                              child: const Text('Sign In', style: TextStyle(fontWeight: FontWeight.bold),)
                           ),
                         ],
                       )

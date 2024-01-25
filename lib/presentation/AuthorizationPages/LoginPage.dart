@@ -3,6 +3,7 @@ import 'package:green_control/presentation/Widgets/CustomTextField.dart';
 import 'package:green_control/util/AppColors.dart';
 import 'package:green_control/util/AppImage.dart';
 import 'package:green_control/util/AppText.dart';
+import 'package:green_control/util/SharedPreferencesOperator.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -15,6 +16,18 @@ class _LoginPageState extends State<LoginPage> {
 
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
+
+  @override
+  void initState() {
+
+    checkOnBoard();
+    super.initState();
+  }
+  void checkOnBoard() async {
+    if(! await SharedPreferencesOperator.containsOnBoardStatus()){
+      Navigator.pushNamed(context, '/on_board');
+    }
+  }
 
   @override
   Widget build(BuildContext context) {

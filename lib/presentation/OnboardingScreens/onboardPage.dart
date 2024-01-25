@@ -4,6 +4,7 @@ import 'package:green_control/presentation/OnboardingScreens/secondOnboardScreen
 import 'package:green_control/presentation/OnboardingScreens/thirdOnboardScreen.dart';
 import 'package:green_control/util/AppColors.dart';
 import 'package:green_control/util/AppText.dart';
+import 'package:green_control/util/SharedPreferencesOperator.dart';
 
 class OnBoardPage extends StatefulWidget {
   const OnBoardPage({super.key});
@@ -80,6 +81,7 @@ class _OnBoardPageState extends State<OnBoardPage> {
                           duration: const Duration(milliseconds: 300), curve: Curves.ease);
                     });
                   }else{
+                    SharedPreferencesOperator.saveOnBoardStatus(true);
                     Navigator.pushReplacementNamed(context, '/');
                   }
                 },

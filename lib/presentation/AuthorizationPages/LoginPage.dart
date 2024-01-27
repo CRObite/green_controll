@@ -99,7 +99,9 @@ class _LoginPageState extends State<LoginPage> {
                           ),
                           const SizedBox(height: 16,),
                           ElevatedButton(
-                            onPressed: (){},
+                            onPressed: (){
+                              Navigator.pushReplacementNamed(context, '/home');
+                            },
                             style: ButtonStyle(
                               backgroundColor: MaterialStateProperty.all<Color>(Colors.black),
                               minimumSize: MaterialStateProperty.all<Size>(const Size(double.infinity, 50)),

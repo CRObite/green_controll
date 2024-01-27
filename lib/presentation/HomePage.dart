@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:green_control/presentation/Widgets/HalfRoundedContainer.dart';
 import 'package:green_control/util/AppColors.dart';
 
 class HomePage extends StatefulWidget {
@@ -28,29 +29,10 @@ class _HomePageState extends State<HomePage> {
       body:SingleChildScrollView(
         child: Column(
           children: [
-            Container(
-              decoration: BoxDecoration(
-                color: AppColors.greyColor,
-                borderRadius: const BorderRadius.only(
-                  topLeft: Radius.circular(50.0),
-                  bottomLeft: Radius.circular(50.0),
-                ),
-              ),
-              width: double.infinity,
-              height: 50,
-              margin: const EdgeInsets.only(top: 32,left: 32),
-              child: const Padding(
-                padding: EdgeInsets.symmetric(vertical: 8.0, horizontal: 32),
-                child: Row(
-                  children: [
-                    Text('Tips', style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
-                  ],
-                ),
-              ),
-            ),
+            const HalfRoundedContainer(title: 'Tips'),
             const SizedBox(height: 8,),
             Padding(
-              padding: const EdgeInsets.only(left: 8),
+              padding: const EdgeInsets.only(left: 32),
               child: Container(
                 height: 250,
                 child: GridView.builder(
@@ -63,9 +45,9 @@ class _HomePageState extends State<HomePage> {
                   itemCount: 10,
                   itemBuilder: (context, index) {
                     return Container(
-                      decoration: const BoxDecoration(
-                        color: Colors.blue,
-                        borderRadius: BorderRadius.all(
+                      decoration: BoxDecoration(
+                        color: AppColors.greenColor,
+                        borderRadius: const BorderRadius.all(
                          Radius.circular(20),
                         ),
                       ),
@@ -82,40 +64,43 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
 
-            const SizedBox(height: 16,),
+            const SizedBox(height: 32,),
 
-            Container(
-              decoration: BoxDecoration(
-                color: AppColors.greyColor,
-                borderRadius: const BorderRadius.only(
-                  topLeft: Radius.circular(50.0),
-                  bottomLeft: Radius.circular(50.0),
-                ),
-              ),
-              width: double.infinity,
-              height: 50,
-              margin: const EdgeInsets.only(left: 32),
-              child: const Padding(
-                padding: EdgeInsets.symmetric(vertical: 8.0, horizontal: 32),
-                child: Row(
-                  children: [
-                    Text('Main', style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
-                  ],
-                ),
-              ),
-            ),
+            const HalfRoundedContainer(title: 'Main'),
 
             const SizedBox(height: 8,),
 
-            ListView.builder(
-              physics: NeverScrollableScrollPhysics(),
-              itemCount: 10,
-              shrinkWrap: true,
-              itemBuilder: (context, index) {
-                return ListTile(
-                  title: Text('4343434343'),
-                );
-              },
+            Padding(
+              padding: const EdgeInsets.only(left: 32, right: 32),
+              child: ListView.builder(
+                physics: const NeverScrollableScrollPhysics(),
+                itemCount: 10,
+                shrinkWrap: true,
+                itemBuilder: (context, index) {
+                  return Card(
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 8,horizontal: 16),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          const Text('Green House', style: TextStyle(fontSize: 16),),
+                          Container(
+                            width: 30,
+                            height: 30,
+                            decoration: const BoxDecoration(
+                              color: Colors.red,
+                              borderRadius: BorderRadius.all(
+                                Radius.circular(50.0),
+                              )
+                            ),
+                            child: const Center(child: Text('!',style: TextStyle(color: Colors.white),),),
+                          )
+                        ],
+                      ),
+                    ),
+                  );
+                },
+              ),
             )
 
 

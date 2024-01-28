@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:green_control/presentation/Application.dart';
 import 'package:green_control/presentation/AuthorizationPages/LoginPage.dart';
 import 'package:green_control/presentation/AuthorizationPages/RegistrationPage.dart';
 import 'package:green_control/presentation/HomePage.dart';
@@ -29,6 +30,7 @@ class _MyAppState extends State<MyApp> {
     '/emailVerify': (context) => const EmailVerification(),
     '/resetPassword': (context) => const ResetPassword(),
     '/home': (context) => const HomePage(),
+    '/app': (context) => const Application(),
   };
 
 

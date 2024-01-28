@@ -75,6 +75,15 @@ class _ApplicationState extends State<Application> {
           ),
         ),
       ),
+
+      floatingActionButton: _currentIndex == 0 ? FloatingActionButton(
+        onPressed: () {
+          Navigator.pushNamed(context, '/adding_new_gh');
+        },
+        backgroundColor: AppColors.greenColor,
+        child: const Icon(Icons.add, color: Colors.white,size: 50,),
+      ): null,
+      floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
     );
   }
 }

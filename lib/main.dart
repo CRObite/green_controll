@@ -2,11 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:green_control/presentation/Application.dart';
 import 'package:green_control/presentation/AuthorizationPages/LoginPage.dart';
 import 'package:green_control/presentation/AuthorizationPages/RegistrationPage.dart';
+import 'package:green_control/presentation/GreenHousePages/AddingNewGreenHouse.dart';
+import 'package:green_control/presentation/GreenHousePages/GreenHouseInfoPage.dart';
 import 'package:green_control/presentation/HomePage.dart';
 import 'package:green_control/presentation/OnboardingScreens/onboardPage.dart';
 import 'package:green_control/presentation/PasswordRecoveryPages/EmailFilling.dart';
 import 'package:green_control/presentation/PasswordRecoveryPages/EmailVerification.dart';
 import 'package:green_control/presentation/PasswordRecoveryPages/ResetPassword.dart';
+import 'package:green_control/presentation/SensorPages/SensorInfoPage.dart';
 
 
 void main() {
@@ -31,6 +34,9 @@ class _MyAppState extends State<MyApp> {
     '/resetPassword': (context) => const ResetPassword(),
     '/home': (context) => const HomePage(),
     '/app': (context) => const Application(),
+    '/gh_info': (context) => const GreenHouseInfo(),
+    '/adding_new_gh': (context) => const AddingNewGreenHouse(),
+    '/sensor_info': (context) => const SensorInfoPage(),
   };
 
 

@@ -23,7 +23,7 @@ class _LongTextFieldState extends State<LongTextField> {
           ? obscureText
           : false,
       decoration: InputDecoration(
-        labelText: 'Green House Name',
+        labelText: widget.hintText,
         contentPadding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
         labelStyle: const TextStyle(color: Colors.grey),
         enabledBorder: OutlineInputBorder(

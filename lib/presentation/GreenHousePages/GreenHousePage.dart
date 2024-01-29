@@ -38,7 +38,7 @@ class _GreenHouseState extends State<GreenHouse> {
                     child: DropdownButton<String>(
                       underline: Container(),
                       isExpanded: true,
-                      hint: const Text('Plants'),
+                      hint: const Text('asdasda'),
                       value: selectedValue,
                       onChanged: (String? newValue) {
                         setState(() {

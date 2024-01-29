@@ -75,10 +75,10 @@ class _GreenHouseInfoState extends State<GreenHouseInfo> {
 
             const SizedBox(height: 16,),
 
-            const HalfRoundedContainer(
+            HalfRoundedContainer(
                 title:'Current Parameters',
-                color: Colors.white,
-                textColor: Colors.black
+                color: AppColors.greenColor,
+                textColor: Colors.white
             ),
             const SizedBox(height: 8,),
 

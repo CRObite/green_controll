@@ -43,22 +43,22 @@ class _CurrentParametersState extends State<CurrentParameters> {
                       width: 30,
                       height: 30,
                       decoration: const BoxDecoration(
-                          color: Colors.red,
+                          color: Colors.white,
                           borderRadius: BorderRadius.all(
                             Radius.circular(50.0),
                           )
                       ),
-                      child: const Center(child: Text('!',style: TextStyle(color: Colors.white,fontSize: 16),),),
+                      child: const Center(child: Icon(Icons.error_outline_rounded,color: Colors.red, size: 30,)),
                     ): Container(
                       width: 30,
                       height: 30,
                       decoration: const BoxDecoration(
-                          color: Colors.green,
+                          color: Colors.white,
                           borderRadius: BorderRadius.all(
                             Radius.circular(50.0),
                           )
                       ),
-                      child: const Center(child: Icon(Icons.check_outlined, color: Colors.white,),),
+                      child: const Center(child: Icon(Icons.check_circle_outline_rounded, color: Colors.green,size: 30,),),
                     ),
                   ],
                 ),

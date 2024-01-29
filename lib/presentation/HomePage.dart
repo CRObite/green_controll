@@ -11,17 +11,29 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
 
+
+
   List<String> ghItems = ['Green House 2', 'Green House 3'];
+  List<String> plantsImage = [
+    'assets/Plants/asparagus.jpg',
+    'assets/Plants/carrots.jpg',
+    'assets/Plants/eggplant.jpg',
+    'assets/Plants/kale.jpg',
+    'assets/Plants/onion.jpg',
+    'assets/Plants/spinach.jpg',
+    'assets/Plants/strawberry.jpg',
+    'assets/Plants/turnip.jpg',
+  ];
 
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       child: Column(
         children: [
-          const HalfRoundedContainer(title: 'Care Tips',color: Colors.white, textColor: Colors.black,),
+          HalfRoundedContainer(title: 'Care Tips',color: AppColors.greenColor, textColor: Colors.white,),
           const SizedBox(height: 8,),
           Padding(
-            padding: const EdgeInsets.only(left: 32),
+            padding:const EdgeInsets.only(left: 32),
             child: Container(
               height: 250,
               child: GridView.builder(
@@ -31,7 +43,7 @@ class _HomePageState extends State<HomePage> {
                   mainAxisSpacing: 8.0,
                 ),
                 scrollDirection: Axis.horizontal,
-                itemCount: 10,
+                itemCount: plantsImage.length,
                 itemBuilder: (context, index) {
                   return Container(
                     decoration: BoxDecoration(
@@ -41,10 +53,14 @@ class _HomePageState extends State<HomePage> {
                       ),
                     ),
 
-                    child: const Center(
-                      child: Text(
-                        'Cucumber',
-                        style: TextStyle(color: Colors.white),
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(20),
+                        child: Image.asset(
+                          plantsImage[index],
+                          fit: BoxFit.cover,
+                        ),
                       ),
                     ),
                   );
@@ -55,7 +71,7 @@ class _HomePageState extends State<HomePage> {
 
           const SizedBox(height: 32,),
 
-          const HalfRoundedContainer(title: 'Current warnings', color: Colors.white, textColor: Colors.black,),
+          HalfRoundedContainer(title: 'Current warnings', color: AppColors.greenColor, textColor: Colors.white,),
 
           const SizedBox(height: 8,),
 
@@ -70,16 +86,25 @@ class _HomePageState extends State<HomePage> {
                       padding: const EdgeInsets.all(8.0),
                       child: GestureDetector(
                         onTap: (){
-
+                          Navigator.pushNamed(context, '/gh_info');
                         },
                         child: Container(
-                          decoration: const BoxDecoration(
-                            image: DecorationImage(
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.grey.withOpacity(0.3),
+                                spreadRadius: 1,
+                                blurRadius: 3,
+                                offset: const Offset(0, 2),
+                              ),
+                            ],
+                            borderRadius: const BorderRadius.all(
+                              Radius.circular(20),
+                            ),
+                            image: const DecorationImage(
                               image: AssetImage('assets/background.jpg'),
                               fit: BoxFit.cover,
-                            ),
-                            borderRadius: BorderRadius.all(
-                              Radius.circular(20),
                             ),
                           ),
                           child: Padding(
@@ -104,12 +129,12 @@ class _HomePageState extends State<HomePage> {
                                       width: 30,
                                       height: 30,
                                       decoration: const BoxDecoration(
-                                          color: Colors.red,
+                                          color: Colors.white,
                                           borderRadius: BorderRadius.all(
                                             Radius.circular(50.0),
                                           )
                                       ),
-                                      child: const Center(child: Text('!',style: TextStyle(color: Colors.white),),),
+                                      child: const Center(child: Icon(Icons.error_outline_rounded,color: Colors.red, size: 30,)),
                                     )
                                 )
                               ],

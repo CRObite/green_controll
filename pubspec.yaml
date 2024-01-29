@@ -35,6 +35,7 @@ dependencies:
   shared_preferences: ^2.2.2
 
 
+
 flutter_native_splash:
   color: "#A7C957"
   image: assets/logo.png
@@ -42,7 +43,12 @@ flutter_native_splash:
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  flutter_launcher_icons: ^0.13.1
 
+flutter_icons:
+  android: true
+  ios: true
+  image_path: 'assets/logo.png'
 
 
   # The "flutter_lints" package below contains a set of recommended lints to

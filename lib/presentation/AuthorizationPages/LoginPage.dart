@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:green_control/presentation/Widgets/CustomTextField.dart';
 import 'package:green_control/util/AppColors.dart';
 import 'package:green_control/util/AppImage.dart';
@@ -55,8 +56,13 @@ class _LoginPageState extends State<LoginPage> {
                       ),
                       const SizedBox(width: 16,),
                       SizedBox(
-                        width: 150,
-                        child: Text(AppText.greenControl, style: const TextStyle(fontSize: 32, color: Colors.white)),
+                        width: 170,
+                        child: Text(AppText.greenControl,
+                          style: GoogleFonts.ribeyeMarrow(
+                            textStyle:  TextStyle(fontSize: 32),
+                            color: Colors.white
+                          )
+                        ),
                       ),
                     ],
                   ),

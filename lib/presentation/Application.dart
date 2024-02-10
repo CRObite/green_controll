@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:green_control/presentation/GreenHousePages/GreenHousePage.dart';
 import 'package:green_control/presentation/HomePage.dart';
 import 'package:green_control/presentation/SensorPages/SensorPage.dart';
@@ -37,7 +38,11 @@ class _ApplicationState extends State<Application> {
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
-        title: Text(getAppBarTitle(), style: const TextStyle(fontSize: 32)),
+        title: Text(getAppBarTitle(), style:
+          GoogleFonts.ribeyeMarrow(
+              textStyle:TextStyle(fontSize: 32)
+          )
+        )
       ),
       body: _parts[_currentIndex],
       bottomNavigationBar: SizedBox(

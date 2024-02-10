@@ -55,11 +55,16 @@ class _HomePageState extends State<HomePage> {
 
                     child: Padding(
                       padding: const EdgeInsets.all(8.0),
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(20),
-                        child: Image.asset(
-                          plantsImage[index],
-                          fit: BoxFit.cover,
+                      child: GestureDetector(
+                        onTap: (){
+                          Navigator.pushNamed(context, '/plant');
+                        },
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(20),
+                          child: Image.asset(
+                            plantsImage[index],
+                            fit: BoxFit.cover,
+                          ),
                         ),
                       ),
                     ),

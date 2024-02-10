@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:green_control/presentation/Widgets/CustomTextField.dart';
 import 'package:green_control/util/AppColors.dart';
 
+import '../Widgets/CustomAppBar.dart';
+
 class ResetPassword extends StatefulWidget {
   const ResetPassword({super.key});
 
@@ -18,17 +20,11 @@ class _ResetPasswordState extends State<ResetPassword> {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       extendBodyBehindAppBar: true,
-      appBar: AppBar(
-        toolbarHeight: 150,
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back,color: Colors.white,),
-          onPressed: () {
-            Navigator.pop(context);
-          },
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(150),
+        child: CustomAppBar(
+          title:'Reset Password',
         ),
-        title: const Text('Reset Password', style: TextStyle(fontSize: 32, color: Colors.white)),
       ),
       body: Container(
         decoration: const BoxDecoration(
@@ -63,7 +59,7 @@ class _ResetPasswordState extends State<ResetPassword> {
                       children: [
 
                         const SizedBox(height: 50,),
-                        const Text('EnterNewPassword',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 24),),
+                        const Text('Enter New Password',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 24),),
                         const SizedBox(height: 8,),
                         Text('The new password must be different from the existing one',textAlign: TextAlign.center,style: TextStyle(color: AppColors.greyColor),),
                         const SizedBox(height: 16,),

@@ -38,6 +38,7 @@ class _MyAppState extends State<MyApp> {
     '/gh_info': (context) => const GreenHouseInfo(),
     '/adding_new_gh': (context) => const AddingNewGreenHouse(),
     '/plant': (context) => const PlantPage(),
+    '/sensor_info': (context) => const SensorInfoPage(),
   };
 
 

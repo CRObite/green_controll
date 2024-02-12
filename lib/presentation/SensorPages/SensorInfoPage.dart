@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:green_control/presentation/Widgets/CurrentParameters.dart';
 import 'package:green_control/presentation/Widgets/HalfRoundedContainer.dart';
 import 'package:green_control/util/AppColors.dart';
@@ -23,7 +24,11 @@ class _SensorInfoPageState extends State<SensorInfoPage> {
             Navigator.pop(context);
           },
         ),
-        title: const Text('Sensor Info', style: TextStyle(fontSize: 32)),
+        title: Text('Sensor Info', style:
+          GoogleFonts.ribeyeMarrow(
+              textStyle:  TextStyle(fontSize: 32)
+          )
+        ),
       ),
       body: SingleChildScrollView(
         child: Column(

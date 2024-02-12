@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:green_control/presentation/Widgets/CurrentParameters.dart';
 import 'package:green_control/presentation/Widgets/HalfRoundedContainer.dart';
 import 'package:green_control/presentation/Widgets/LongTextField.dart';
@@ -29,7 +30,11 @@ class _AddingNewGreenHouseState extends State<AddingNewGreenHouse> {
             Navigator.pop(context);
           },
         ),
-        title: const Text('Add New GreenHouse', style: TextStyle(fontSize: 32)),
+        title: Text('Add GreenHouse', style:
+          GoogleFonts.ribeyeMarrow(
+              textStyle:  TextStyle(fontSize: 32)
+          )
+        ),
       ),
       body: SingleChildScrollView(
         child: Column(

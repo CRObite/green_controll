@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:green_control/presentation/Widgets/CustomTextField.dart';
 
 import '../../util/AppColors.dart';
@@ -29,13 +30,18 @@ class _RegistrationPageState extends State<RegistrationPage> {
           ),
           child: Column(
             children: [
-              const SizedBox(
+              SizedBox(
                 height: 150,
                 width: double.infinity,
                 child: Center(
                   child: SizedBox(
                     width: 150,
-                    child: Text('Sign Up', style: TextStyle(fontSize: 32, color: Colors.white)),
+                    child: Text(
+                        'Sign Up',
+                        style: GoogleFonts.ribeyeMarrow(
+                          textStyle: TextStyle(fontSize: 32, color: Colors.white)
+                        )
+                    ),
                   ),
                 ),
               ),

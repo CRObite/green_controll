@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:green_control/presentation/Widgets/CurrentParameters.dart';
 import 'package:green_control/presentation/Widgets/HalfRoundedContainer.dart';
 import 'package:green_control/util/AppColors.dart';
@@ -18,6 +19,7 @@ class _GreenHouseInfoState extends State<GreenHouseInfo> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
@@ -27,7 +29,11 @@ class _GreenHouseInfoState extends State<GreenHouseInfo> {
             Navigator.pop(context);
           },
         ),
-        title: const Text('GreenHouse Info', style: TextStyle(fontSize: 32)),
+        title: Text('GreenHouse Info', style:
+          GoogleFonts.ribeyeMarrow(
+              textStyle:  TextStyle(fontSize: 32)
+          )
+        ),
       ),
       body:  SingleChildScrollView(
         child: Column(

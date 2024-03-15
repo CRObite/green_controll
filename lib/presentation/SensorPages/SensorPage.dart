@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:green_control/presentation/Widgets/CustomShadow.dart';
 import 'package:green_control/presentation/Widgets/LongTextField.dart';
 
 class SensorPage extends StatefulWidget {
@@ -40,7 +41,7 @@ class _SensorPageState extends State<SensorPage> {
                       Navigator.pushNamed(context, '/sensor_info');
                     },
                     child: Container(
-                      decoration: const BoxDecoration(
+                      decoration: BoxDecoration(
                         image: DecorationImage(
                           image: AssetImage('assets/background2.jpg'),
                           fit: BoxFit.cover,
@@ -48,6 +49,7 @@ class _SensorPageState extends State<SensorPage> {
                         borderRadius: BorderRadius.all(
                           Radius.circular(20),
                         ),
+                        boxShadow: CustomShadow.shadow,
                       ),
                       child: Padding(
                         padding: const EdgeInsets.symmetric(vertical: 16,horizontal: 32),

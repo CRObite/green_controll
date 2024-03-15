@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:form_field_validator/form_field_validator.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:green_control/presentation/Widgets/CustomTextField.dart';
 
@@ -69,19 +70,29 @@ class _RegistrationPageState extends State<RegistrationPage> {
                             hintText: 'CRObite',
                             labelText: 'Name or Nickname',
                             controller: nameController,
-                            type: TextInputType.text,),
+                            type: TextInputType.text,
+                            validator: MultiValidator([
+                              RequiredValidator(errorText: "Name required"),
+                            ]),),
                           const SizedBox(height: 16,),
                           CustomTextField(
                             hintText: 'appUser@gmail.com',
                             labelText: 'Email',
                             controller: emailController,
-                            type: TextInputType.emailAddress,),
+                            type: TextInputType.emailAddress,
+                            validator: MultiValidator([
+                              RequiredValidator(errorText: "Email required"),
+                              EmailValidator(errorText: "Please insert a valid email")
+                            ]),),
                           const SizedBox(height: 16,),
                           CustomTextField(
                             controller: passwordController,
                             labelText: 'Password',
                             hintText: 'qwerty1234',
                             type:  TextInputType.visiblePassword,
+                            validator: MultiValidator([
+                              RequiredValidator(errorText: "Password required"),
+                            ]),
                           ),
                           const SizedBox(height: 16,),
                           CustomTextField(
@@ -89,6 +100,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                             labelText: 'Confirm Password',
                             hintText: 'qwerty1234',
                             type:  TextInputType.visiblePassword,
+                            validator: null
                           ),
                           const SizedBox(height: 16,),
                           ElevatedButton(
@@ -115,6 +127,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                           const SizedBox(width: 8,),
                           GestureDetector(
                               onTap: (){
+
                                 Navigator.pushReplacementNamed(context, '/');
                               },
                               child: const Text('Sign In', style: TextStyle(fontWeight: FontWeight.bold),)

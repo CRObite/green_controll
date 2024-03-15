@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:green_control/presentation/Widgets/CustomShadow.dart';
 
 class OtpForm extends StatefulWidget {
   const OtpForm({Key? key}) : super(key: key);
@@ -26,14 +27,7 @@ class _OtpFormState extends State<OtpForm> {
         borderRadius: const BorderRadius.all(
           Radius.circular(10.0),
         ),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.grey.withOpacity(0.3),
-            spreadRadius: 1,
-            blurRadius: 3,
-            offset: const Offset(0, 2),
-          ),
-        ],
+        boxShadow: CustomShadow.shadow
       ),
       child: SizedBox(
         height: 64,

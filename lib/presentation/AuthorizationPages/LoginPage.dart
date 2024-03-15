@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:form_field_validator/form_field_validator.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:green_control/presentation/Widgets/CustomTextField.dart';
 import 'package:green_control/util/AppColors.dart';
@@ -17,7 +18,9 @@ class _LoginPageState extends State<LoginPage> {
 
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
-
+  final _formKey = GlobalKey<FormState>();
+  
+  
   @override
   void initState() {
 
@@ -84,57 +87,71 @@ class _LoginPageState extends State<LoginPage> {
                     children: [
 
 
-                      Column(
-                        children: [
-
-                          const SizedBox(height: 50,),
-
-                          const Text('Login', style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold)),
-                          const SizedBox(height: 32,),
-                          CustomTextField(
-                            hintText: 'appUser@gmail.com',
-                            labelText: 'Email',
-                            controller: emailController,
-                            type: TextInputType.emailAddress,),
-                          const SizedBox(height: 16,),
-                          CustomTextField(
-                            controller: passwordController,
-                            labelText: 'Password',
-                            hintText: 'qwerty1234',
-                            type:  TextInputType.visiblePassword,
-                          ),
-                          const SizedBox(height: 16,),
-                          ElevatedButton(
-                            onPressed: (){
-                              Navigator.pushReplacementNamed(context, '/app');
-                            },
-                            style: ButtonStyle(
-                              backgroundColor: MaterialStateProperty.all<Color>(Colors.black),
-                              minimumSize: MaterialStateProperty.all<Size>(const Size(double.infinity, 50)),
-                              shape: MaterialStateProperty.all<OutlinedBorder>(
-                                RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(10.0),
+                      Form(
+                        key: _formKey,
+                        autovalidateMode: AutovalidateMode.always,
+                        child: Column(
+                          children: [
+                        
+                            const SizedBox(height: 50,),
+                        
+                            const Text('Login', style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold)),
+                            const SizedBox(height: 32,),
+                            CustomTextField(
+                              hintText: 'appUser@gmail.com',
+                              labelText: 'Email',
+                              controller: emailController,
+                              type: TextInputType.emailAddress,
+                              validator: MultiValidator([
+                                RequiredValidator(errorText: "Email required"),
+                                EmailValidator(errorText: "Please insert a valid email")
+                              ]),
+                            ),
+                            const SizedBox(height: 16,),
+                            CustomTextField(
+                              controller: passwordController,
+                              labelText: 'Password',
+                              hintText: 'qwerty1234',
+                              type:  TextInputType.visiblePassword,
+                              validator: MultiValidator([
+                                RequiredValidator(errorText: "Password required"),
+                                MinLengthValidator(6,
+                                    errorText: "Password must be at least of 6 chars"),
+                              ]),
+                            ),
+                            const SizedBox(height: 16,),
+                            ElevatedButton(
+                              onPressed: (){
+                                Navigator.pushReplacementNamed(context, '/app');
+                              },
+                              style: ButtonStyle(
+                                backgroundColor: MaterialStateProperty.all<Color>(Colors.black),
+                                minimumSize: MaterialStateProperty.all<Size>(const Size(double.infinity, 50)),
+                                shape: MaterialStateProperty.all<OutlinedBorder>(
+                                  RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(10.0),
+                                  ),
                                 ),
                               ),
+                              child: const Text('Login', style: TextStyle(color: Colors.white, fontSize: 16)),
                             ),
-                            child: const Text('Login', style: TextStyle(color: Colors.white, fontSize: 16)),
-                          ),
-                          const SizedBox(height: 16,),
-                          Row(
-
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Text('Forgot your password?' , style: TextStyle( color: AppColors.greyColor,),),
-                              const SizedBox(width: 8,),
-                              GestureDetector(
-                                  onTap: (){
-                                    Navigator.pushNamed(context, '/recover');
-                                  },
-                                  child: const Text('Recover password', style: TextStyle(fontWeight: FontWeight.bold),)
-                              ),
-                            ],
-                          )
-                        ],
+                            const SizedBox(height: 16,),
+                            Row(
+                        
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                Text('Forgot your password?' , style: TextStyle( color: AppColors.greyColor,),),
+                                const SizedBox(width: 8,),
+                                GestureDetector(
+                                    onTap: (){
+                                      Navigator.pushNamed(context, '/recover');
+                                    },
+                                    child: const Text('Recover password', style: TextStyle(fontWeight: FontWeight.bold),)
+                                ),
+                              ],
+                            )
+                          ],
+                        ),
                       ),
 
                       Row(
@@ -145,7 +162,9 @@ class _LoginPageState extends State<LoginPage> {
                           const SizedBox(width: 8,),
                           GestureDetector(
                               onTap: (){
-                                Navigator.pushReplacementNamed(context, '/registration');
+                                if (_formKey.currentState!.validate()) {
+                                  Navigator.pushReplacementNamed(context, '/registration');
+                                }
                               },
                               child: const Text('Sign Up', style: TextStyle(fontWeight: FontWeight.bold),)
                           ),

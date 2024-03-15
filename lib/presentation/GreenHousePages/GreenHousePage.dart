@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:green_control/presentation/Widgets/CustomShadow.dart';
 import 'package:green_control/presentation/Widgets/LongTextField.dart';
 import 'package:green_control/util/AppColors.dart';
 
@@ -80,7 +81,7 @@ class _GreenHouseState extends State<GreenHouse> {
                       Navigator.pushNamed(context, '/gh_info');
                     },
                     child: Container(
-                      decoration: const BoxDecoration(
+                      decoration: BoxDecoration(
                         image: DecorationImage(
                           image: AssetImage('assets/background.jpg'),
                           fit: BoxFit.cover,
@@ -88,6 +89,7 @@ class _GreenHouseState extends State<GreenHouse> {
                         borderRadius: BorderRadius.all(
                           Radius.circular(20),
                         ),
+                        boxShadow: CustomShadow.shadow,
                       ),
                       child: Padding(
                         padding: const EdgeInsets.symmetric(vertical: 16,horizontal: 32),

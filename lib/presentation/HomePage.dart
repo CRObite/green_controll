@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:green_control/presentation/Widgets/CustomShadow.dart';
 import 'package:green_control/presentation/Widgets/HalfRoundedContainer.dart';
 import 'package:green_control/util/AppColors.dart';
 
@@ -45,25 +46,29 @@ class _HomePageState extends State<HomePage> {
                 scrollDirection: Axis.horizontal,
                 itemCount: plantsImage.length,
                 itemBuilder: (context, index) {
-                  return Container(
-                    decoration: BoxDecoration(
-                      color: AppColors.greenColor,
-                      borderRadius: const BorderRadius.all(
-                        Radius.circular(20),
+                  return Padding(
+                    padding: const EdgeInsets.all(4.0),
+                    child: Container(
+                      decoration: BoxDecoration(
+                        color: AppColors.greenColor,
+                        borderRadius: const BorderRadius.all(
+                          Radius.circular(20),
+                        ),
+                        boxShadow: CustomShadow.shadow,
                       ),
-                    ),
 
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: GestureDetector(
-                        onTap: (){
-                          Navigator.pushNamed(context, '/plant');
-                        },
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.circular(20),
-                          child: Image.asset(
-                            plantsImage[index],
-                            fit: BoxFit.cover,
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: GestureDetector(
+                          onTap: (){
+                            Navigator.pushNamed(context, '/plant');
+                          },
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(20),
+                            child: Image.asset(
+                              plantsImage[index],
+                              fit: BoxFit.cover,
+                            ),
                           ),
                         ),
                       ),
@@ -96,14 +101,7 @@ class _HomePageState extends State<HomePage> {
                         child: Container(
                           decoration: BoxDecoration(
                             color: Colors.white,
-                            boxShadow: [
-                              BoxShadow(
-                                color: Colors.grey.withOpacity(0.3),
-                                spreadRadius: 1,
-                                blurRadius: 3,
-                                offset: const Offset(0, 2),
-                              ),
-                            ],
+                            boxShadow: CustomShadow.shadow,
                             borderRadius: const BorderRadius.all(
                               Radius.circular(20),
                             ),

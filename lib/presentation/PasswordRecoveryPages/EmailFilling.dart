@@ -67,7 +67,8 @@ class _EmailFillingState extends State<EmailFilling> {
                           hintText: 'appUser@gmail.com',
                           labelText: 'Email',
                           controller: emailController,
-                          type: TextInputType.emailAddress,),
+                          type: TextInputType.emailAddress,
+                          validator: null,),
                         const SizedBox(height: 16,),
 
                         const SizedBox(height: 16,),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:green_control/presentation/Widgets/CustomShadow.dart';
 
 class HalfRoundedContainer extends StatelessWidget {
   const HalfRoundedContainer({super.key, required this.title, required this.color, required this.textColor});
@@ -16,14 +17,7 @@ class HalfRoundedContainer extends StatelessWidget {
           topLeft: Radius.circular(50.0),
           bottomLeft: Radius.circular(50.0),
         ),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.grey.withOpacity(0.3),
-            spreadRadius: 1,
-            blurRadius: 3,
-            offset: const Offset(0, 2),
-          ),
-        ],
+        boxShadow: CustomShadow.shadow,
       ),
 
       width: double.infinity,

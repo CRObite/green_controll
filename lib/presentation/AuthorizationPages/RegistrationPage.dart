@@ -1,5 +1,5 @@
+
 import 'package:flutter/material.dart';
-import 'package:form_field_validator/form_field_validator.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:green_control/presentation/Widgets/CustomTextField.dart';
 
@@ -13,6 +13,9 @@ class RegistrationPage extends StatefulWidget {
 }
 
 class _RegistrationPageState extends State<RegistrationPage> {
+
+
+  String? errorText;
   TextEditingController emailController = TextEditingController();
   TextEditingController nameController = TextEditingController();
   TextEditingController confirmController = TextEditingController();
@@ -65,34 +68,53 @@ class _RegistrationPageState extends State<RegistrationPage> {
                       Column(
                         children: [
 
-                          const SizedBox(height: 50,),
+                          const SizedBox(height: 10,),
                           CustomTextField(
-                            hintText: 'CRObite',
-                            labelText: 'Name or Nickname',
+                            hintText: 'Kuanysh',
+                            labelText: 'FirstName',
                             controller: nameController,
                             type: TextInputType.text,
-                            validator: MultiValidator([
-                              RequiredValidator(errorText: "Name required"),
-                            ]),),
+                            onChanged: (){
+                              setState(() {
+                                errorText = null;
+                              });
+                            },
+                            ),
+                          const SizedBox(height: 16,),
+                          CustomTextField(
+                            hintText: 'Abdramanov',
+                            labelText: 'LastName',
+                            controller: nameController,
+                            type: TextInputType.text,
+                            onChanged:(){
+                              setState(() {
+                                errorText = null;
+                              });
+                            },
+                          ),
                           const SizedBox(height: 16,),
                           CustomTextField(
                             hintText: 'appUser@gmail.com',
                             labelText: 'Email',
                             controller: emailController,
                             type: TextInputType.emailAddress,
-                            validator: MultiValidator([
-                              RequiredValidator(errorText: "Email required"),
-                              EmailValidator(errorText: "Please insert a valid email")
-                            ]),),
+                            onChanged:(){
+                              setState(() {
+                                errorText = null;
+                              });
+                            },
+                            ),
                           const SizedBox(height: 16,),
                           CustomTextField(
                             controller: passwordController,
                             labelText: 'Password',
                             hintText: 'qwerty1234',
                             type:  TextInputType.visiblePassword,
-                            validator: MultiValidator([
-                              RequiredValidator(errorText: "Password required"),
-                            ]),
+                            onChanged:(){
+                              setState(() {
+                                errorText = null;
+                              });
+                            },
                           ),
                           const SizedBox(height: 16,),
                           CustomTextField(
@@ -100,7 +122,11 @@ class _RegistrationPageState extends State<RegistrationPage> {
                             labelText: 'Confirm Password',
                             hintText: 'qwerty1234',
                             type:  TextInputType.visiblePassword,
-                            validator: null
+                            onChanged:(){
+                              setState(() {
+                                errorText = null;
+                              });
+                            },
                           ),
                           const SizedBox(height: 16,),
                           ElevatedButton(

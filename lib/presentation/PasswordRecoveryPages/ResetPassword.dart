@@ -12,6 +12,8 @@ class ResetPassword extends StatefulWidget {
 }
 
 class _ResetPasswordState extends State<ResetPassword> {
+
+  String? errorText;
   TextEditingController confirmController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
 
@@ -68,7 +70,11 @@ class _ResetPasswordState extends State<ResetPassword> {
                           labelText: 'Password',
                           hintText: 'qwerty1234',
                           type:  TextInputType.visiblePassword,
-                          validator: null,
+                          onChanged:(){
+                            setState(() {
+                              errorText = null;
+                            });
+                          },
                         ),
                         const SizedBox(height: 16,),
                         CustomTextField(
@@ -76,7 +82,11 @@ class _ResetPasswordState extends State<ResetPassword> {
                           labelText: 'Confirm Password',
                           hintText: 'qwerty1234',
                           type:  TextInputType.visiblePassword,
-                          validator: null,
+                          onChanged:(){
+                            setState(() {
+                              errorText = null;
+                            });
+                          },
                         ),
                         const SizedBox(height: 16,),
 

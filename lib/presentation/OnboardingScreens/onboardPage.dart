@@ -4,7 +4,7 @@ import 'package:green_control/presentation/OnboardingScreens/secondOnboardScreen
 import 'package:green_control/presentation/OnboardingScreens/thirdOnboardScreen.dart';
 import 'package:green_control/util/AppColors.dart';
 import 'package:green_control/util/AppText.dart';
-import 'package:green_control/util/SharedPreferencesOperator.dart';
+import 'package:green_control/config/SharedPreferencesOperator.dart';
 
 class OnBoardPage extends StatefulWidget {
   const OnBoardPage({super.key});

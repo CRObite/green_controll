@@ -57,6 +57,7 @@ class CustomException implements Exception {
         name = exceptionType.name;
 
   factory CustomException.fromDioException(Exception error) {
+
     try {
       if (error is DioException) {
         switch (error.type) {
@@ -101,16 +102,33 @@ class CustomException implements Exception {
                 message: 'No internet connectivity',
               );
             }
-            if (error.response?.data['headers']['code'] == null) {
+
+            dynamic errorCode;
+            dynamic errorMessage;
+
+            if (error.response!.data is Map<String, dynamic>) {
+              Map<String, dynamic> errorData = error.response!.data;
+              print('Error Data: $errorData');
+              if (errorData.containsKey('headers')) {
+                dynamic headers = errorData['headers'];
+                print('Error Headers: $headers');
+                if (headers is Map<String, dynamic>) {
+                  errorCode = headers['code'];
+                  errorMessage = headers['message'];
+                  print('Error Code: $errorCode');
+                }
+              }
+            }
+
+            if (errorCode == null) {
               return CustomException(
                 exceptionType: _ExceptionType.UnrecognizedException,
                 statusCode: error.response?.statusCode,
                 message: error.response?.statusMessage ?? 'Unknown',
               );
             }
-            final name = error.response?.data['headers']['code'] as String;
-            final message =
-            error.response?.data['headers']['message'] as String;
+            final name = errorCode as String;
+            final message = errorMessage as String;
             if (name == _ExceptionType.TokenExpiredException.name) {
               return CustomException(
                 exceptionType: _ExceptionType.TokenExpiredException,

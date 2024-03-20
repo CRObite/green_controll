@@ -35,7 +35,10 @@ dependencies:
   shared_preferences: ^2.2.2
   google_fonts: ^6.0.0
   dio: ^5.4.1
-  form_field_validator: ^1.1.0
+  flutter_bloc: ^8.1.4
+
+  json_annotation: ^4.8.1
+  build_runner: ^2.4.7
 
 flutter_native_splash:
   color: "#A7C957"
@@ -45,6 +48,7 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_launcher_icons: ^0.13.1
+  json_serializable: ^6.7.1
 
 flutter_icons:
   android: true

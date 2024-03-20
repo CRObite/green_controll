@@ -1,18 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:form_field_validator/form_field_validator.dart';
+
 
 import '../../util/AppColors.dart';
 import 'CustomShadow.dart';
 
 class CustomTextField extends StatefulWidget {
-  const CustomTextField({super.key, required this.type, required this.hintText, required this.labelText, required this.controller, required this.validator});
+  const CustomTextField({super.key, required this.type, required this.hintText, required this.labelText, required this.controller, required this.onChanged});
 
 
   final TextInputType type;
   final String hintText;
   final String labelText;
   final TextEditingController controller;
-  final MultiValidator? validator;
+  final Function onChanged;
+
 
   @override
   State<CustomTextField> createState() => _CustomTextFieldState();
@@ -32,7 +33,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
         boxShadow: CustomShadow.shadow
       ),
       child: Padding(
-        padding: const EdgeInsets.all(16.0),
+        padding: const EdgeInsets.symmetric(vertical: 8,horizontal: 16),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -69,7 +70,10 @@ class _CustomTextFieldState extends State<CustomTextField> {
                 )
                     : null,
               ),
-              validator: widget.validator ?? MultiValidator([]),
+
+              onChanged: (value) {
+                widget.onChanged();
+              },
             ),
           ],
         ),

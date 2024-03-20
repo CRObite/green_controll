@@ -12,7 +12,7 @@ class EmailFilling extends StatefulWidget {
 }
 
 class _EmailFillingState extends State<EmailFilling> {
-
+  String? errorText;
   TextEditingController emailController = TextEditingController();
 
   @override
@@ -68,7 +68,11 @@ class _EmailFillingState extends State<EmailFilling> {
                           labelText: 'Email',
                           controller: emailController,
                           type: TextInputType.emailAddress,
-                          validator: null,),
+                          onChanged:(){
+                            setState(() {
+                              errorText = null;
+                            });
+                          },),
                         const SizedBox(height: 16,),
 
                         const SizedBox(height: 16,),

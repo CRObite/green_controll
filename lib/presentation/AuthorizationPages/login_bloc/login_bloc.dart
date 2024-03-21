@@ -37,7 +37,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     });
 
     on<OnTextChanged>((event, emit) async {
-      emit(LoginError(errorMessage: ''));
+      emit(LoginInitial());
     });
   }
 }

@@ -68,7 +68,9 @@ class _LoginFormState extends State<LoginForm> {
   Widget build(BuildContext context) {
     return BlocListener<LoginBloc,LoginState>(
         listener: (context,state){
-
+          if (state is LoginSuccess) {
+            Navigator.of(context).pushReplacementNamed('/home');
+          }
         },
       child: BlocBuilder<LoginBloc,LoginState>(
         builder: (context,state){

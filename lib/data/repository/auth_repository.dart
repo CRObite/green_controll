@@ -4,7 +4,13 @@ import 'package:green_control/config/custom_exeption.dart';
 import 'package:green_control/domain/user/user.dart';
 import 'package:green_control/util/AppUrl.dart';
 
-Dio dio = Dio();
+Dio dio = Dio(
+    BaseOptions(
+      connectTimeout: Duration(milliseconds: 3 * 1000),
+      receiveTimeout: Duration(milliseconds: 60 * 1000),
+    )
+);
+
 
 Future<User?> loginUser(String email, String password) async {
 
@@ -27,72 +33,53 @@ Future<User?> loginUser(String email, String password) async {
 
 }
 
-Future<void> registerUser(String firstname, String lastname,String email, String password) async {
-  try {
-    // dio.options.headers['Authorization'] = 'Bearer ${CurrentUser.currentTestUser?.accessToken}';
+Future<bool> registerUser(String firstname, String lastname,String email, String password) async {
+  final response = await dio.post(
+      '${AppApiUrls.sign_up}',
+      data: {
+        "firstname":firstname,
+        "lastname":lastname,
+        "email":email,
+        "password":password,
+        "picture": null,
+      }
+  );
 
-    final response = await dio.post(
-        '${AppApiUrls.sign_up}',
-        data: {
-          "firstname":firstname,
-          "lastname":lastname,
-          "email":email,
-          "password":password,
-          "picture": null,
-        }
-    );
-
-    if (response.statusCode == 200) {
-      print(response.data);
-    }
-  } catch (e) {
-    print(e);
-    if (e is Exception) {
-      CustomException customException = CustomException.fromDioException(e);
-
-    }
+  if (response.statusCode == 200) {
+    print(response.data);
+    return true;
+  }else{
+    return false;
   }
 }
 
-Future<void> sendCode(String email) async {
-  try {
-    // dio.options.headers['Authorization'] = 'Bearer ${CurrentUser.currentTestUser?.accessToken}';
-
-    final response = await dio.post(
-        '${AppApiUrls.get_code_to_email}$email',
-    );
-
-    if (response.statusCode == 200) {
-      print(response.data);
-    }
-  } catch (e) {
-    print(e);
-    if (e is Exception) {
-      CustomException customException = CustomException.fromDioException(e);
-    }
+Future<bool> sendCode(String email) async {
+  final response = await dio.get(
+    '${AppApiUrls.get_code_to_email}$email',
+  );
+  if (response.statusCode == 200) {
+    print(response.data);
+    return true;
+  } else {
+    return false;
   }
 }
 
-Future<void> changePassword(String email, int code,String password) async {
-  try {
-    // dio.options.headers['Authorization'] = 'Bearer ${CurrentUser.currentTestUser?.accessToken}';
 
-    final response = await dio.post(
+Future<bool> changePassword(String email, String code,String password) async {
+  final response = await dio.post(
       '${AppApiUrls.reset_password_by_code}$email',
       queryParameters: {
         'code': code,
         'password': password,
       }
-    );
+  );
 
-    if (response.statusCode == 200) {
-      print(response.data);
-    }
-  } catch (e) {
-    print(e);
-    if (e is Exception) {
-      CustomException customException = CustomException.fromDioException(e);
-    }
+  if (response.statusCode == 200) {
+    print(response.data);
+    return true;
+  }else{
+    return false;
   }
 }
 

@@ -19,9 +19,3 @@ class LoginError extends LoginState {
 
   LoginError({required this.errorMessage});
 }
-
-class LoginFailure extends LoginState {
-  final String error;
-
-  LoginFailure({required this.error});
-}

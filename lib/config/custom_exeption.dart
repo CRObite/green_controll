@@ -106,29 +106,19 @@ class CustomException implements Exception {
             dynamic errorCode;
             dynamic errorMessage;
 
+
             if (error.response!.data is Map<String, dynamic>) {
               Map<String, dynamic> errorData = error.response!.data;
               print('Error Data: $errorData');
-              if (errorData.containsKey('headers')) {
-                dynamic headers = errorData['headers'];
-                print('Error Headers: $headers');
-                if (headers is Map<String, dynamic>) {
-                  errorCode = headers['code'];
-                  errorMessage = headers['message'];
-                  print('Error Code: $errorCode');
-                }
-              }
+              print(errorData['detail']);
+
+              errorCode = errorData['status'];
+              errorMessage = errorData['detail'] ??  errorData['error'];
+              print('Error Code: $errorCode');
             }
 
-            if (errorCode == null) {
-              return CustomException(
-                exceptionType: _ExceptionType.UnrecognizedException,
-                statusCode: error.response?.statusCode,
-                message: error.response?.statusMessage ?? 'Unknown',
-              );
-            }
-            final name = errorCode as String;
-            final message = errorMessage as String;
+            final String name = '$errorCode';
+            final String message = '$errorMessage';
             if (name == _ExceptionType.TokenExpiredException.name) {
               return CustomException(
                 exceptionType: _ExceptionType.TokenExpiredException,

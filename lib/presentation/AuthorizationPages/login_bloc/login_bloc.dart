@@ -1,5 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:green_control/config/validation.dart';
+import 'package:green_control/domain/current_user.dart';
 import 'package:meta/meta.dart';
 
 import '../../../config/custom_exeption.dart';
@@ -20,6 +21,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
         try {
           final user = await loginUser(event.email, event.password);
           if (user != null) {
+            CurrentUser.currentUser = user;
             emit(LoginSuccess(user: user));
           }
         } catch (e) {

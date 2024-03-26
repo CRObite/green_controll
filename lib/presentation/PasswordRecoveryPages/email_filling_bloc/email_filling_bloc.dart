@@ -28,7 +28,7 @@ class EmailFillingBloc extends Bloc<EmailFillingEvent, EmailFillingState> {
           print(e);
           if (e is Exception) {
             CustomException customException = CustomException.fromDioException(e);
-            print(customException.message);
+            print(customException.name);
 
             emit(EmailFillingError(errorMessage: customException.message));
           }

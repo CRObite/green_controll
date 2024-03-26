@@ -1,4 +1,4 @@
-class AppApiUrls{
+class AppUrls{
   static String address = 'http://192.168.10.122:8090';  // set current address
   static String gateway = '$address/gateway';
 
@@ -17,8 +17,17 @@ class AppApiUrls{
   static String plants = '$smart_greenhouse/plants';
 
   //greenhouse
-  static String greenhouse = '$smart_greenhouse/greenhouse';
+  static String greenhouse = '$smart_greenhouse/greenhouse/';
+
+  static String my_greenhouses = '$smart_greenhouse/greenhouse/my';
 
   //arduino
   static String arduino = '$smart_greenhouse/arduino';
+
+  //file-store
+  static String file_store = '$gateway/file-store';
+
+  static String download_file = '$file_store/file/download/';
+
+
 }

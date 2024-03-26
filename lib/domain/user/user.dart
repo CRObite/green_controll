@@ -12,7 +12,6 @@ class User{
   String? email;
 
 
-
   User(this.userId, this.firstname, this.lastname, this.email, this.token);
 
   factory User.fromJson(Map<String, dynamic> json) => _$UserFromJson(json);

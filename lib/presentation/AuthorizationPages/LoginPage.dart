@@ -69,7 +69,7 @@ class _LoginFormState extends State<LoginForm> {
     return BlocListener<LoginBloc,LoginState>(
         listener: (context,state){
           if (state is LoginSuccess) {
-            Navigator.of(context).pushReplacementNamed('/home');
+            Navigator.of(context).pushReplacementNamed('/app');
           }
         },
       child: BlocBuilder<LoginBloc,LoginState>(

@@ -1,6 +1,7 @@
 
 import 'package:shared_preferences/shared_preferences.dart';
 
+
 class SharedPreferencesOperator {
   static const String keyOnBoardStatus = 'onBoardStatus';
 

@@ -4,7 +4,7 @@ import 'package:green_control/presentation/AuthorizationPages/LoginPage.dart';
 import 'package:green_control/presentation/AuthorizationPages/RegistrationPage.dart';
 import 'package:green_control/presentation/GreenHousePages/AddingNewGreenHouse.dart';
 import 'package:green_control/presentation/GreenHousePages/GreenHouseInfoPage.dart';
-import 'package:green_control/presentation/HomePage.dart';
+import 'package:green_control/presentation/HomePage/HomePage.dart';
 import 'package:green_control/presentation/OnboardingScreens/onboardPage.dart';
 import 'package:green_control/presentation/PasswordRecoveryPages/EmailFilling.dart';
 import 'package:green_control/presentation/PasswordRecoveryPages/EmailVerification.dart';

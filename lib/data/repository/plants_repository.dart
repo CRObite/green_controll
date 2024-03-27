@@ -20,7 +20,8 @@ Future<List<Plant>> getPlants(String accessToken) async {
   if (response.statusCode == 200) {
     print(response.data);
 
-    List<dynamic> responseData = response.data;
+
+    List<dynamic> responseData = response.data['items'];
     List<Plant> plants = responseData.map((json) => Plant.fromJson(json)).toList();
 
     print(plants);

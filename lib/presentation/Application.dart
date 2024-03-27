@@ -5,7 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:green_control/data/repository/file_store_repository.dart';
 import 'package:green_control/domain/current_user.dart';
 import 'package:green_control/presentation/GreenHousePages/GreenHousePage.dart';
-import 'package:green_control/presentation/HomePage.dart';
+import 'package:green_control/presentation/HomePage/HomePage.dart';
 import 'package:green_control/presentation/SensorPages/SensorPage.dart';
 import 'package:green_control/presentation/Widgets/BottomNavBarClipper.dart';
 import 'package:green_control/util/AppColors.dart';

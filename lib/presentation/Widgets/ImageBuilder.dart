@@ -29,7 +29,7 @@ class _ImageBuilderState extends State<ImageBuilder> {
             ),
           );
         } else if (snapshot.hasError) {
-          return Text('Error loading image');
+          return Icon(Icons.image_not_supported_outlined);
         } else {
           return Center(child: SizedBox(width: 50, height: 50,child: CircularProgressIndicator()));
         }

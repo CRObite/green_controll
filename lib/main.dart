@@ -8,7 +8,7 @@ import 'package:green_control/presentation/HomePage/HomePage.dart';
 import 'package:green_control/presentation/OnboardingScreens/onboardPage.dart';
 import 'package:green_control/presentation/PasswordRecoveryPages/EmailFilling.dart';
 import 'package:green_control/presentation/PasswordRecoveryPages/EmailVerification.dart';
-import 'package:green_control/presentation/PlantPage.dart';
+import 'package:green_control/presentation/PlantPage/PlantPage.dart';
 import 'package:green_control/presentation/SensorPages/SensorInfoPage.dart';
 
 
@@ -34,7 +34,6 @@ class _MyAppState extends State<MyApp> {
     '/app': (context) => const Application(),
     '/gh_info': (context) => const GreenHouseInfo(),
     '/adding_new_gh': (context) => const AddingNewGreenHouse(),
-    '/plant': (context) => const PlantPage(),
     '/sensor_info': (context) => const SensorInfoPage(),
   };
 

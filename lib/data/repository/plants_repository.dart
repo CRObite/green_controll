@@ -31,3 +31,24 @@ Future<List<Plant>> getPlants(String accessToken) async {
     return [];
   }
 }
+
+Future<Plant?> getPlantById(String accessToken,int plantId) async {
+  dio.options.headers['Authorization'] = 'Bearer ${accessToken}';
+
+  final response = await dio.get(
+    '${AppUrls.plants}/$plantId',
+  );
+
+  if (response.statusCode == 200) {
+    print(response.data);
+
+
+    Plant plant = Plant.fromJson(response.data);
+
+    print(plant);
+
+    return plant;
+  }else{
+    return null;
+  }
+}

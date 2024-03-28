@@ -12,8 +12,6 @@ class GreenHouse extends StatefulWidget {
 
 class _GreenHouseState extends State<GreenHouse> {
 
-  String? selectedValue;
-  List<String> dropdownItems = ['All' ,'Onion', 'Carrot', 'Cucumber', 'Salad'];
   List<String> ghItems = ['Green House 1' ,'Green House 2', 'Green House 3'];
   List<String> ghPlantsItems = ['Tomatoes' ,'Onion', 'Cucumber'];
   final TextEditingController _editingController = TextEditingController();
@@ -28,34 +26,6 @@ class _GreenHouseState extends State<GreenHouse> {
             padding: const EdgeInsets.all(8.0),
             child: Row(
               children: [
-                Container(
-                  width: 150,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10.0), // Adjust the value as needed
-                    border: Border.all(color: AppColors.greyColor),
-                  ),
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 8),
-                    child: DropdownButton<String>(
-                      underline: Container(),
-                      isExpanded: true,
-                      hint: const Text('Plants'),
-                      value: selectedValue,
-                      onChanged: (String? newValue) {
-                        setState(() {
-                          selectedValue = newValue!;
-                        });
-                      },
-                      items: dropdownItems.map<DropdownMenuItem<String>>((String value) {
-                        return DropdownMenuItem<String>(
-                          value: value,
-                          child: Text(value),
-                        );
-                      }).toList(),
-                    ),
-                  ),
-                ),
-                const SizedBox(width: 16,),
 
                 Expanded(
                   child: LongTextField(

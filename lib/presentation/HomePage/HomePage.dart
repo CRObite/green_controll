@@ -8,6 +8,7 @@ import 'package:green_control/presentation/Widgets/ImageBuilder.dart';
 import 'package:green_control/util/AppColors.dart';
 
 import '../../domain/plants/plant.dart';
+import '../PlantPage/PlantPage.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -135,7 +136,10 @@ class _HomeFormState extends State<HomeForm> {
           padding: const EdgeInsets.all(8.0),
           child: GestureDetector(
             onTap: () {
-              Navigator.pushNamed(context, '/plant');
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => PlantPage(plantId: plant.id)),
+              );
             },
             child: ClipRRect(
               borderRadius: BorderRadius.circular(20),
@@ -176,9 +180,11 @@ class _HomeFormState extends State<HomeForm> {
         itemBuilder: (context, index) {
           return _buildWarningItem(state.ghs[index]);
         },
-      )
-          : Center(
-        child: Text('No warnings'),
+      ) : Center(
+        child: Container(
+          margin: EdgeInsets.only(top: 32),
+            child: Text('No warnings', style: TextStyle(fontSize: 20),)
+        ),
       ),
     );
   }

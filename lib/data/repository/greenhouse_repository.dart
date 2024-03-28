@@ -50,3 +50,19 @@ Future<GreenHouse?> getGreenHouse(String accessToken, int GreenhouseId) async {
     return null;
   }
 }
+
+Future<bool> deleteGreenHouse(String accessToken, int GreenhouseId) async {
+  dio.options.headers['Authorization'] = 'Bearer ${accessToken}';
+
+  final response = await dio.delete(
+    '${AppUrls.greenhouse}$GreenhouseId',
+  );
+
+  if (response.statusCode == 200) {
+    print(response.data);
+
+    return true;
+  }else{
+    return false;
+  }
+}

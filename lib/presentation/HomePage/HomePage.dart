@@ -77,7 +77,7 @@ class _HomeFormState extends State<HomeForm> {
           _buildCareTipsSection(state),
           SizedBox(height: 8),
           _buildPlantsGridView(state),
-          SizedBox(height: 32),
+          SizedBox(height: 8),
           _buildWarningsSection(state),
         ],
       ),

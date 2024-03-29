@@ -19,6 +19,8 @@ class EmailVerificationBloc extends Bloc<EmailVerificationEvent, EmailVerificati
 
       if (validation == null) {
 
+
+        print(event.code);
         try {
 
           final bool isChanged = await changePassword(event.email, event.code, event.password);

@@ -9,9 +9,9 @@ class GreenhouseLoading extends GreenhouseState {}
 
 class GreenhouseSuccess extends GreenhouseState {
 
-  final List<GreenHouse> plants;
+  final List<GreenHouse> ghs;
 
-  GreenhouseSuccess(this.plants);
+  GreenhouseSuccess(this.ghs);
 }
 
 class GreenhouseError extends GreenhouseState {

@@ -12,6 +12,9 @@ GreenHouse _$GreenHouseFromJson(Map<String, dynamic> json) => GreenHouse(
       json['owner'] == null
           ? null
           : User.fromJson(json['owner'] as Map<String, dynamic>),
+      json['arduino'] == null
+          ? null
+          : Arduino.fromJson(json['arduino'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$GreenHouseToJson(GreenHouse instance) =>
@@ -19,4 +22,5 @@ Map<String, dynamic> _$GreenHouseToJson(GreenHouse instance) =>
       'id': instance.id,
       'name': instance.name,
       'owner': instance.owner,
+      'arduino': instance.arduino,
     };

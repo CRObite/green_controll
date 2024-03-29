@@ -30,7 +30,7 @@ class PlantBloc extends Bloc<PlantEvent, PlantState> {
             emit(PlantSuccess(plant, null));
           }
         }else{
-          emit(PlantError(errorMessage: 'No PlantData' ));
+          emit(PlantError(errorMessage: 'No Plant Data' ));
         }
 
 

@@ -63,6 +63,20 @@ class _SensorPageState extends State<SensorPage> {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(sensorNames[index],style: const TextStyle(color: Colors.white,fontSize: 23,fontWeight: FontWeight.bold),),
+                                  SizedBox(height: 8,),
+                                  Container(
+                                      decoration: const BoxDecoration(
+                                        color: Colors.white,
+                                        borderRadius: BorderRadius.all(
+                                          Radius.circular(20),
+                                        ),
+                                      ),
+
+                                      child: Padding(
+                                        padding: const EdgeInsets.all(8.0),
+                                        child: Text('asdasdas',style: const TextStyle(color: Colors.black,fontWeight: FontWeight.bold),),
+                                      )
+                                  ),
                                 ],
                               ),
                             ),

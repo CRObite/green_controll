@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:green_control/presentation/HomePage/home_bloc/home_bloc.dart';
 import 'package:green_control/presentation/PlantPage/plant_bloc/plant_bloc.dart';
 import 'package:green_control/util/AppColors.dart';
 import 'package:green_control/util/box_shadow.dart';

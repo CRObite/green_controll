@@ -17,6 +17,8 @@ class _UserPageState extends State<UserPage> {
 
   Uint8List? bytes;
 
+  List<String> ghn = ['GreenHouse 1','GreenHouse 2','GreenHouse 3'];
+  List<String> ghp = ['Cucumber','Santa','Mar'];
 
   @override
   void initState() {
@@ -122,6 +124,30 @@ class _UserPageState extends State<UserPage> {
 
 
 
+          ListView.builder(
+              itemCount: ghn.length,
+            itemBuilder: (context, index) {
+              return Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(ghn[index],style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),),
+
+                  Container(
+                      decoration: BoxDecoration(
+                          color: AppColors.greenColor,
+                          borderRadius: BorderRadius.all(
+                            Radius.circular(20),
+                          )
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 0 ,horizontal: 16),
+                        child: Text(ghp[index],style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold, color: Colors.white),)
+                      )
+                  ),
+                ],
+              );
+            },
+          ),
 
           SizedBox(height: 32,),
 

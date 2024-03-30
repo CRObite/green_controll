@@ -28,6 +28,7 @@ class AppUrls{
   static String file_store = '$gateway/file-store';
 
   static String download_file = '$file_store/file/download/';
+  static String upload_file = '$file_store/file/upload';
 
 
 }

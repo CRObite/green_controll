@@ -33,3 +33,29 @@ Future<Uint8List?> downloadFile(String accessToken, String? fileId) async {
     return null;
   }
 }
+
+Future<bool> uploadFile(String accessToken, String? filePath) async {
+  dio.options.headers['Authorization'] = 'Bearer ${accessToken}';
+
+  if(filePath != null || filePath!.isEmpty){
+    return false;
+  }
+
+  FormData formData = FormData.fromMap({
+    'file': await MultipartFile.fromFile(filePath, filename: 'avatar.jpg'),
+  });
+
+  final response = await dio.get(
+    '${AppUrls.upload_file}',
+    data: formData,
+  );
+
+
+  if (response.statusCode == 200) {
+    print(response.data);
+
+    return true;
+  }else{
+    return false;
+  }
+}

@@ -40,6 +40,8 @@ dependencies:
   json_annotation: ^4.8.1
   build_runner: ^2.4.7
 
+  image_picker: ^1.0.7
+
 flutter_native_splash:
   color: "#A7C957"
   image: assets/logo.png

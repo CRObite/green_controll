@@ -12,8 +12,11 @@ Dio dio = Dio(
 );
 
 
-Future<Uint8List?> downloadFile(String accessToken, String fileId) async {
+Future<Uint8List?> downloadFile(String accessToken, String? fileId) async {
   dio.options.headers['Authorization'] = 'Bearer ${accessToken}';
+  if (fileId == null) {
+    return null;
+  }
 
   final response = await dio.get(
     '${AppUrls.download_file}$fileId',

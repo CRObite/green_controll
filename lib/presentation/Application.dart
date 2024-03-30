@@ -7,6 +7,7 @@ import 'package:green_control/domain/current_user.dart';
 import 'package:green_control/presentation/GreenHousePages/GreenHousePage.dart';
 import 'package:green_control/presentation/HomePage/HomePage.dart';
 import 'package:green_control/presentation/SensorPages/SensorPage.dart';
+import 'package:green_control/presentation/UserPage/UserPage.dart';
 import 'package:green_control/presentation/Widgets/BottomNavBarClipper.dart';
 import 'package:green_control/util/AppColors.dart';
 import 'package:green_control/util/AppImage.dart';
@@ -28,7 +29,6 @@ class _ApplicationState extends State<Application> {
     if(CurrentUser.currentUser == null){
       Navigator.pushReplacementNamed(context, '/');
     }
-
     getBytes();
 
     super.initState();
@@ -36,7 +36,7 @@ class _ApplicationState extends State<Application> {
 
   void getBytes() async {
 
-    Uint8List? response = await downloadFile(CurrentUser.currentUser!.token, '65e1bc44a78f8d5755253076');
+    Uint8List? response = await downloadFile(CurrentUser.currentUser!.token, CurrentUser.currentUser!.profilePicture);
     setState(() {
       bytes = response;
     });
@@ -49,14 +49,14 @@ class _ApplicationState extends State<Application> {
   final List<Widget> _parts = [
     const GreenHouse(),
     const HomePage(),
-    const SensorPage(),
+    const UserPage(),
   ];
 
   String getAppBarTitle(){
     switch(_currentIndex){
       case 0: return 'Green Houses';
       case 1: return 'Home';
-      case 2: return 'Sensors';
+      case 2: return 'Profile';
       default: return '';
     }
   }
@@ -72,28 +72,6 @@ class _ApplicationState extends State<Application> {
               textStyle:TextStyle(fontSize: 32)
           )
         ),
-        actions: [
-          GestureDetector(
-            onTap: (){
-
-              Navigator.pushReplacementNamed(context, '/');
-            },
-            child: Container(
-              margin: EdgeInsets.only(right: 16),
-              child: bytes!= null ?
-              CircleAvatar(
-                radius: 20,
-                backgroundImage: MemoryImage(bytes!),
-              ):
-              CircleAvatar(
-                radius: 20,
-                backgroundColor: Colors.grey.withOpacity(0.2),
-                child: Icon(Icons.person, size: 20, color: AppColors.greenColor),
-              ),
-            ),
-
-          ),
-        ],
       ),
       body: _parts[_currentIndex],
       bottomNavigationBar: SizedBox(
@@ -118,8 +96,8 @@ class _ApplicationState extends State<Application> {
                 label: 'Home',
               ),
               BottomNavigationBarItem(
-                icon: Icon(Icons.account_tree_rounded),
-                label: 'Sensors',
+                icon: Icon(Icons.person),
+                label: 'Profile',
               ),
 
             ],

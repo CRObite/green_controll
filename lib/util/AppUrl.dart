@@ -9,6 +9,7 @@ class AppUrls{
   static String sign_in = '$auth/sign-in';
   static String get_code_to_email = '$auth/reset-password/';
   static String reset_password_by_code = '$auth/change-password/';
+  static String update_profile_image = '$auth/update-profile-image';
 
   //smart_greenhouse
   static String smart_greenhouse = '$gateway/smart-greenhouse';

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:green_control/presentation/Widgets/CurrentParameters.dart';
+
 import 'package:green_control/presentation/Widgets/HalfRoundedContainer.dart';
 import 'package:green_control/presentation/Widgets/LongTextField.dart';
 import 'package:green_control/util/AppColors.dart';
@@ -17,6 +17,17 @@ class _AddingNewGreenHouseState extends State<AddingNewGreenHouse> {
   final TextEditingController _nameController = TextEditingController();
   final TextEditingController _sensorController = TextEditingController();
   final TextEditingController _plantController = TextEditingController();
+
+
+
+  @override
+  void dispose() {
+    _nameController.dispose();
+    _sensorController.dispose();
+    _plantController.dispose();
+    super.dispose();
+  }
+
 
   @override
   Widget build(BuildContext context) {

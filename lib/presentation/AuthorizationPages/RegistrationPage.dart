@@ -76,7 +76,7 @@ class _RegisterFormState extends State<RegisterForm> {
                 child: Column(
                   children: [
                     SizedBox(
-                      height: 150,
+                      height: 120,
                       width: double.infinity,
                       child: Center(
                         child: SizedBox(
@@ -92,136 +92,138 @@ class _RegisterFormState extends State<RegisterForm> {
                     ),
 
                     Container(
-                      height: MediaQuery.of(context).size.height - 150,
+                      height: MediaQuery.of(context).size.height - 120,
                       decoration: const BoxDecoration(
                         color: Colors.white,
                         borderRadius: BorderRadius.only(
                           topRight: Radius.circular(50.0),
                         ),
                       ),
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 32),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-
-
-                            Column(
-                              children: [
-
-                                const SizedBox(height: 10,),
-                                CustomTextField(
-                                  hintText: 'Kuanysh',
-                                  labelText: 'FirstName',
-                                  controller: firstController,
-                                  type: TextInputType.text,
-                                  onChanged: (){
-                                    BlocProvider.of<RegisterBloc>(context).add(
-                                      OnTextChanged(),
-                                    );
-                                  },
-                                ),
-                                const SizedBox(height: 16,),
-                                CustomTextField(
-                                  hintText: 'Abdramanov',
-                                  labelText: 'LastName',
-                                  controller: lastController,
-                                  type: TextInputType.text,
-                                  onChanged:(){
-                                    BlocProvider.of<RegisterBloc>(context).add(
-                                      OnTextChanged(),
-                                    );
-                                  },
-                                ),
-                                const SizedBox(height: 16,),
-                                CustomTextField(
-                                  hintText: 'appUser@gmail.com',
-                                  labelText: 'Email',
-                                  controller: emailController,
-                                  type: TextInputType.emailAddress,
-                                  onChanged:(){
-                                    BlocProvider.of<RegisterBloc>(context).add(
-                                      OnTextChanged(),
-                                    );
-                                  },
-                                ),
-                                const SizedBox(height: 16,),
-                                CustomTextField(
-                                  controller: passwordController,
-                                  labelText: 'Password',
-                                  hintText: 'qwerty1234',
-                                  type:  TextInputType.visiblePassword,
-                                  onChanged:(){
-                                    BlocProvider.of<RegisterBloc>(context).add(
-                                      OnTextChanged(),
-                                    );
-                                  },
-                                ),
-                                const SizedBox(height: 16,),
-                                CustomTextField(
-                                  controller: confirmController,
-                                  labelText: 'Confirm Password',
-                                  hintText: 'qwerty1234',
-                                  type:  TextInputType.visiblePassword,
-                                  onChanged:(){
-                                    BlocProvider.of<RegisterBloc>(context).add(
-                                      OnTextChanged(),
-                                    );
-                                  },
-                                ),
-                                const SizedBox(height: 16,),
-
-                                if (state is RegisterError)
-                                  Text(
-                                    state.errorMessage ?? '',
-                                    style: TextStyle(color: Colors.red, fontSize: 16),
+                      child: SingleChildScrollView(
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 32),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                        
+                        
+                              Column(
+                                children: [
+                        
+                                  const SizedBox(height: 10,),
+                                  CustomTextField(
+                                    hintText: 'Kuanysh',
+                                    labelText: 'FirstName',
+                                    controller: firstController,
+                                    type: TextInputType.text,
+                                    onChanged: (){
+                                      BlocProvider.of<RegisterBloc>(context).add(
+                                        OnTextChanged(),
+                                      );
+                                    },
                                   ),
-                                const SizedBox(
-                                  height: 16,
-                                ),
-
-                                ElevatedButton(
-                                  onPressed: (){
-                                    BlocProvider.of<RegisterBloc>(context).add(
-                                      RegisterButtonPressed(
-                                        email: emailController.text,
-                                        password: passwordController.text,
-                                        firstName: firstController.text,
-                                        lastName: lastController.text,
-                                        confirmPassword: confirmController.text,
-                                      ),
-                                    );
-                                  },
-                                  style: ButtonStyle(
-                                    backgroundColor: MaterialStateProperty.all<Color>(Colors.black),
-                                    minimumSize: MaterialStateProperty.all<Size>(const Size(double.infinity, 50)),
-                                    shape: MaterialStateProperty.all<OutlinedBorder>(
-                                      RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.circular(10.0),
+                                  const SizedBox(height: 16,),
+                                  CustomTextField(
+                                    hintText: 'Abdramanov',
+                                    labelText: 'LastName',
+                                    controller: lastController,
+                                    type: TextInputType.text,
+                                    onChanged:(){
+                                      BlocProvider.of<RegisterBloc>(context).add(
+                                        OnTextChanged(),
+                                      );
+                                    },
+                                  ),
+                                  const SizedBox(height: 16,),
+                                  CustomTextField(
+                                    hintText: 'appUser@gmail.com',
+                                    labelText: 'Email',
+                                    controller: emailController,
+                                    type: TextInputType.emailAddress,
+                                    onChanged:(){
+                                      BlocProvider.of<RegisterBloc>(context).add(
+                                        OnTextChanged(),
+                                      );
+                                    },
+                                  ),
+                                  const SizedBox(height: 16,),
+                                  CustomTextField(
+                                    controller: passwordController,
+                                    labelText: 'Password',
+                                    hintText: 'qwerty1234',
+                                    type:  TextInputType.visiblePassword,
+                                    onChanged:(){
+                                      BlocProvider.of<RegisterBloc>(context).add(
+                                        OnTextChanged(),
+                                      );
+                                    },
+                                  ),
+                                  const SizedBox(height: 16,),
+                                  CustomTextField(
+                                    controller: confirmController,
+                                    labelText: 'Confirm Password',
+                                    hintText: 'qwerty1234',
+                                    type:  TextInputType.visiblePassword,
+                                    onChanged:(){
+                                      BlocProvider.of<RegisterBloc>(context).add(
+                                        OnTextChanged(),
+                                      );
+                                    },
+                                  ),
+                                  const SizedBox(height: 16,),
+                        
+                                  if (state is RegisterError)
+                                    Text(
+                                      state.errorMessage ?? '',
+                                      style: TextStyle(color: Colors.red, fontSize: 16),
+                                    ),
+                                  const SizedBox(
+                                    height: 16,
+                                  ),
+                        
+                                  ElevatedButton(
+                                    onPressed: (){
+                                      BlocProvider.of<RegisterBloc>(context).add(
+                                        RegisterButtonPressed(
+                                          email: emailController.text,
+                                          password: passwordController.text,
+                                          firstName: firstController.text,
+                                          lastName: lastController.text,
+                                          confirmPassword: confirmController.text,
+                                        ),
+                                      );
+                                    },
+                                    style: ButtonStyle(
+                                      backgroundColor: MaterialStateProperty.all<Color>(Colors.black),
+                                      minimumSize: MaterialStateProperty.all<Size>(const Size(double.infinity, 50)),
+                                      shape: MaterialStateProperty.all<OutlinedBorder>(
+                                        RoundedRectangleBorder(
+                                          borderRadius: BorderRadius.circular(10.0),
+                                        ),
                                       ),
                                     ),
+                                    child: const Text('Register', style: TextStyle(color: Colors.white, fontSize: 16)),
                                   ),
-                                  child: const Text('Register', style: TextStyle(color: Colors.white, fontSize: 16)),
-                                ),
-                              ],
-                            ),
-
-                            Row(
-
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Text('Already have any account' , style: TextStyle( color: AppColors.greyColor,),),
-                                const SizedBox(width: 8,),
-                                GestureDetector(
-                                    onTap: (){
-
-                                      Navigator.pushReplacementNamed(context, '/');
-                                    },
-                                    child: const Text('Sign In', style: TextStyle(fontWeight: FontWeight.bold),)
-                                ),
-                              ],
-                            )
-                          ],
+                                ],
+                              ),
+                        
+                              Row(
+                        
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Text('Already have any account' , style: TextStyle( color: AppColors.greyColor,),),
+                                  const SizedBox(width: 8,),
+                                  GestureDetector(
+                                      onTap: (){
+                        
+                                        Navigator.pushReplacementNamed(context, '/');
+                                      },
+                                      child: const Text('Sign In', style: TextStyle(fontWeight: FontWeight.bold),)
+                                  ),
+                                ],
+                              )
+                            ],
+                          ),
                         ),
                       ),
                     )

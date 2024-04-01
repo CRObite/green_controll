@@ -85,7 +85,7 @@ class _LoginFormState extends State<LoginForm> {
               child: Column(
                 children: [
                   SizedBox(
-                    height: 300,
+                    height: 200,
                     width: double.infinity,
                     child: Center(
                       child: Row(
@@ -99,7 +99,7 @@ class _LoginFormState extends State<LoginForm> {
                             width: 16,
                           ),
                           SizedBox(
-                            width: 170,
+                            width: 220,
                             child: Text(AppText.greenControl,
                                 style: GoogleFonts.ribeyeMarrow(
                                     textStyle: TextStyle(fontSize: 32),
@@ -110,7 +110,7 @@ class _LoginFormState extends State<LoginForm> {
                     ),
                   ),
                   Container(
-                    height: MediaQuery.of(context).size.height - 300,
+                    height: MediaQuery.of(context).size.height - 200,
                     decoration: const BoxDecoration(
                       color: Colors.white,
                       borderRadius: BorderRadius.only(
@@ -198,17 +198,16 @@ class _LoginFormState extends State<LoginForm> {
                                 height: 16,
                               ),
                               Row(
-                                mainAxisAlignment: MainAxisAlignment.start,
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 children: [
                                   Text(
                                     'Forgot your password?',
                                     style: TextStyle(
                                       color: AppColors.greyColor,
+                                      fontSize: 12
                                     ),
                                   ),
-                                  const SizedBox(
-                                    width: 8,
-                                  ),
+
                                   GestureDetector(
                                       onTap: () {
                                         Navigator.pushNamed(context, '/recover');
@@ -216,7 +215,10 @@ class _LoginFormState extends State<LoginForm> {
                                       child: const Text(
                                         'Recover password',
                                         style:
-                                        TextStyle(fontWeight: FontWeight.bold),
+                                        TextStyle(
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 14
+                                        ),
                                       )),
                                 ],
                               ),

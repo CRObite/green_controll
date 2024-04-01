@@ -52,3 +52,26 @@ Future<Arduino?> getArduinoById(String accessToken, int id) async {
     return null;
   }
 }
+
+Future<bool> setPlantToArduino(String accessToken, int arduinoId, int plantId) async {
+  dio.options.headers['Authorization'] = 'Bearer ${accessToken}';
+
+  final response = await dio.put(
+    '${AppUrls.arduino}',
+    data: {
+      "id": arduinoId,
+      "plant": {
+        "id": plantId
+      }
+    }
+  );
+
+  if (response.statusCode == 200) {
+    print(response.data);
+
+    return true;
+  }else{
+    return false;
+  }
+}
+

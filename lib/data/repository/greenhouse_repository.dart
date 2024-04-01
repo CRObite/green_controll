@@ -2,6 +2,7 @@
 import 'package:dio/dio.dart';
 import 'package:green_control/domain/greenhouse/greenhouse.dart';
 
+import '../../domain/arduino/arduino.dart';
 import '../../util/AppUrl.dart';
 
 Dio dio = Dio(
@@ -66,3 +67,26 @@ Future<bool> deleteGreenHouse(String accessToken, int GreenhouseId) async {
     return false;
   }
 }
+
+Future<bool> crateGreenHouse(String accessToken, String name, int arduinoId) async {
+  dio.options.headers['Authorization'] = 'Bearer ${accessToken}';
+
+  final response = await dio.post(
+    '${AppUrls.greenhouse}',
+    data: {
+      "name": name,
+      "arduino":{
+        "id":arduinoId
+      }
+    }
+  );
+
+  if (response.statusCode == 200) {
+    print(response.data);
+
+    return true;
+  }else{
+    return false;
+  }
+}
+

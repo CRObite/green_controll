@@ -83,3 +83,20 @@ Future<bool> changePassword(String email, String code,String password) async {
   }
 }
 
+Future<bool> changeUserAvatar(String accessToken, String imageId) async {
+
+  dio.options.headers['Authorization'] = 'Bearer ${accessToken}';
+  print(imageId);
+
+  final response = await dio.put(
+      '${AppUrls.update_profile_image}',
+      data: imageId
+  );
+
+  if (response.statusCode == 200) {
+    print(response.data);
+    return true;
+  }else{
+    return false;
+  }
+}

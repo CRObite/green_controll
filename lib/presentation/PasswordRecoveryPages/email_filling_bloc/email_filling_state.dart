@@ -9,7 +9,6 @@ class EmailFillingLoading extends EmailFillingState {}
 
 class EmailFillingSuccess extends EmailFillingState {}
 
-
 class EmailFillingError extends EmailFillingState {
   final String errorMessage;
 

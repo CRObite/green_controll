@@ -11,9 +11,14 @@ Plant _$PlantFromJson(Map<String, dynamic> json) => Plant(
       json['name'] as String?,
       json['description'] as String?,
       json['imageUrl'] as String?,
-      (json['temperature'] as num?)?.toDouble(),
-      (json['humidity'] as num?)?.toDouble(),
-      (json['carbonDioxide'] as num?)?.toDouble(),
+      (json['minimumTemperature'] as num?)?.toDouble(),
+      (json['maximumTemperature'] as num?)?.toDouble(),
+      (json['minimumHumidity'] as num?)?.toDouble(),
+      (json['maximumHumidity'] as num?)?.toDouble(),
+      (json['minimumLight'] as num?)?.toDouble(),
+      (json['maximumLight'] as num?)?.toDouble(),
+      (json['minimumCarbonDioxide'] as num?)?.toDouble(),
+      (json['maximumCarbonDioxide'] as num?)?.toDouble(),
     );
 
 Map<String, dynamic> _$PlantToJson(Plant instance) => <String, dynamic>{
@@ -21,7 +26,12 @@ Map<String, dynamic> _$PlantToJson(Plant instance) => <String, dynamic>{
       'name': instance.name,
       'description': instance.description,
       'imageUrl': instance.imageUrl,
-      'temperature': instance.temperature,
-      'humidity': instance.humidity,
-      'carbonDioxide': instance.carbonDioxide,
+      'minimumTemperature': instance.minimumTemperature,
+      'maximumTemperature': instance.maximumTemperature,
+      'minimumHumidity': instance.minimumHumidity,
+      'maximumHumidity': instance.maximumHumidity,
+      'minimumLight': instance.minimumLight,
+      'maximumLight': instance.maximumLight,
+      'minimumCarbonDioxide': instance.minimumCarbonDioxide,
+      'maximumCarbonDioxide': instance.maximumCarbonDioxide,
     };

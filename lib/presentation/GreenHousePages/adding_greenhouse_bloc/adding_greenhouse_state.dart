@@ -15,6 +15,8 @@ class AddingGreenhouseSuccess extends AddingGreenhouseState {
   AddingGreenhouseSuccess(this.plants, this.arduino);
 }
 
+class AddingGreenhouseCrated extends AddingGreenhouseState {}
+
 
 class AddingGreenhouseError extends AddingGreenhouseState {
   final String errorMessage;

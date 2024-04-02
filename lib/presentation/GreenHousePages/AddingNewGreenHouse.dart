@@ -17,7 +17,7 @@ class _AddingNewGreenHouseState extends State<AddingNewGreenHouse> {
   final TextEditingController _nameController = TextEditingController();
   final TextEditingController _sensorController = TextEditingController();
   final TextEditingController _plantController = TextEditingController();
-
+  String? _selectedItem;
 
 
   @override
@@ -63,29 +63,34 @@ class _AddingNewGreenHouseState extends State<AddingNewGreenHouse> {
             const SizedBox(height: 8,),
             HalfRoundedContainer(title: 'Set green house sensor',  color: AppColors.greenColor, textColor: Colors.white,),
             const SizedBox(height: 8,),
+
             Padding(
               padding: const EdgeInsets.all(8.0),
-              child: Row(
-
-                children: [
-                  Flexible(
-                    flex: 10,
-                    child: LongTextField(
-                      type: TextInputType.text,
-                      hintText: 'Sensor Name',
-                      controller: _sensorController,
-                    ),
-                  ),
-
-
-                  Flexible(
-                    flex: 2,
-                    child: IconButton(
-                        onPressed: (){},
-                        icon: Icon(Icons.search)
-                    ),
-                  ),
-                ],
+              child: Container(
+                padding: EdgeInsets.symmetric(horizontal: 16),
+                decoration: BoxDecoration(
+                  border: Border.all(color:AppColors.greyColor,width: 1),
+                  borderRadius: BorderRadius.circular(10)
+                ),
+                child: DropdownButton<String>(
+                  value: _selectedItem,
+                  underline: SizedBox(),
+                  hint: Text('Select Arduino'),
+                  icon: Icon(Icons.arrow_drop_down),
+                  isExpanded: true,
+                  onChanged: (String? newValue) {
+                    setState(() {
+                      _selectedItem = newValue;
+                    });
+                  },
+                  items: <String>['Option 1', 'Option 2', 'Option 3', 'Option 4']
+                      .map<DropdownMenuItem<String>>((String value) {
+                    return DropdownMenuItem<String>(
+                      value: value,
+                      child: Text(value),
+                    );
+                  }).toList(),
+                ),
               ),
             ),
             const SizedBox(height: 8,),
@@ -93,27 +98,31 @@ class _AddingNewGreenHouseState extends State<AddingNewGreenHouse> {
             const SizedBox(height: 8,),
             Padding(
               padding: const EdgeInsets.all(8.0),
-              child: Row(
-
-                children: [
-                  Flexible(
-                    flex: 10,
-                    child: LongTextField(
-                      type: TextInputType.text,
-                      hintText: 'Plant Name',
-                      controller: _plantController,
-                    ),
-                  ),
-
-
-                  Flexible(
-                    flex: 2,
-                    child: IconButton(
-                        onPressed: (){},
-                        icon: Icon(Icons.search)
-                    ),
-                  ),
-                ],
+              child: Container(
+                padding: EdgeInsets.symmetric(horizontal: 16),
+                decoration: BoxDecoration(
+                    border: Border.all(color:AppColors.greyColor,width: 1),
+                    borderRadius: BorderRadius.circular(15)
+                ),
+                child: DropdownButton<String>(
+                  value: _selectedItem,
+                  underline: SizedBox(),
+                  hint: Text('Select Arduino'),
+                  icon: Icon(Icons.arrow_drop_down),
+                  isExpanded: true,
+                  onChanged: (String? newValue) {
+                    setState(() {
+                      _selectedItem = newValue;
+                    });
+                  },
+                  items: <String>['Option 1', 'Option 2', 'Option 3', 'Option 4']
+                      .map<DropdownMenuItem<String>>((String value) {
+                    return DropdownMenuItem<String>(
+                      value: value,
+                      child: Text(value),
+                    );
+                  }).toList(),
+                ),
               ),
             ),
 

@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:green_control/data/repository/arduino_repository.dart';
+import 'package:green_control/data/repository/greenhouse_repository.dart';
 import 'package:green_control/data/repository/plants_repository.dart';
 import 'package:green_control/domain/arduino/arduino.dart';
 import 'package:meta/meta.dart';
@@ -40,7 +41,32 @@ class AddingGreenhouseBloc extends Bloc<AddingGreenhouseEvent, AddingGreenhouseS
     on<crateButtonPressed>((event, emit) async {
       emit(AddingGreenhouseLoading());
 
+      try {
 
+        bool plantSet = await  setPlantToArduino(CurrentUser.currentUser!.token, event.arduinoId, event.plantId);
+        if(plantSet){
+
+          bool greenHouseWasCrated = await crateGreenHouse(CurrentUser.currentUser!.token, event.name, event.arduinoId);
+
+          if(greenHouseWasCrated){
+            emit(AddingGreenhouseCrated());
+          }else{
+            print('Greenhouse Wasnt Created');
+          }
+
+        }else{
+          print('Arduino Wasnt Set');
+        }
+
+      } catch (e) {
+        print(e);
+        if (e is Exception) {
+          CustomException customException = CustomException.fromDioException(e);
+          print(customException.message);
+
+          emit(AddingGreenhouseError(errorMessage: customException.message));
+        }
+      }
 
     });
   }

@@ -22,7 +22,7 @@ Future<List<Arduino>> getAllArduino(String accessToken) async {
   if (response.statusCode == 200) {
     print(response.data);
 
-    List<dynamic> responseData = response.data;
+    List<dynamic> responseData = response.data['items'];
     List<Arduino> arduinos = responseData.map((json) => Arduino.fromJson(json)).toList();
 
     print(arduinos);

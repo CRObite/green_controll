@@ -146,7 +146,7 @@ class _AddingNewGreenHouseFormState extends State<AddingNewGreenHouseForm> {
                             child: DropdownButton<Plant>(
                               value: _selectedPlant,
                               underline: SizedBox(),
-                              hint: Text('Select Arduino'),
+                              hint: Text('Select Plant'),
                               icon: Icon(Icons.arrow_drop_down),
                               isExpanded: true,
                               onChanged: (Plant? newValue) {

@@ -7,10 +7,12 @@ class loadPlantAndArduinoData extends AddingGreenhouseEvent{}
 
 class crateButtonPressed extends AddingGreenhouseEvent{
 
-  final int arduinoId;
-  final int plantId;
+  final Arduino? arduino;
+  final Plant? plant;
   final String name;
 
-  crateButtonPressed(this.arduinoId, this.plantId, this.name);
+  crateButtonPressed({required this.arduino, required this.plant, required this.name});
+
+
 
 }

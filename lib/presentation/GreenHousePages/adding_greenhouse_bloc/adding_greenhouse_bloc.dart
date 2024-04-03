@@ -16,6 +16,8 @@ part 'adding_greenhouse_state.dart';
 
 class AddingGreenhouseBloc extends Bloc<AddingGreenhouseEvent, AddingGreenhouseState> {
   AddingGreenhouseBloc() : super(AddingGreenhouseInitial()) {
+
+
     on<AddingGreenhouseEvent>((event, emit) async {
       emit(AddingGreenhouseLoading());
 
@@ -43,20 +45,25 @@ class AddingGreenhouseBloc extends Bloc<AddingGreenhouseEvent, AddingGreenhouseS
 
       try {
 
-        bool plantSet = await  setPlantToArduino(CurrentUser.currentUser!.token, event.arduinoId, event.plantId);
-        if(plantSet){
+        if(event.arduino != null && event.plant!= null && event.name.isNotEmpty){
+          bool plantSet = await  setPlantToArduino(CurrentUser.currentUser!.token, event.arduino!.id, event.plant!.id);
+          if(plantSet){
 
-          bool greenHouseWasCrated = await crateGreenHouse(CurrentUser.currentUser!.token, event.name, event.arduinoId);
+            bool greenHouseWasCrated = await crateGreenHouse(CurrentUser.currentUser!.token, event.name, event.arduino!.id);
 
-          if(greenHouseWasCrated){
-            emit(AddingGreenhouseCrated());
+            if(greenHouseWasCrated){
+              emit(AddingGreenhouseCrated());
+            }else{
+              print('Greenhouse Wasnt Created');
+            }
+
           }else{
-            print('Greenhouse Wasnt Created');
+            print('Arduino Wasnt Set');
           }
-
-        }else{
-          print('Arduino Wasnt Set');
+        } else{
+          emit(AddingGreenhouseError(errorMessage: 'Fill and select all fields'));
         }
+
 
       } catch (e) {
         print(e);

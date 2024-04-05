@@ -1,18 +1,21 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:green_control/config/firebase_api.dart';
+import 'package:green_control/firebase_options.dart';
 import 'package:green_control/presentation/Application.dart';
 import 'package:green_control/presentation/AuthorizationPages/LoginPage.dart';
 import 'package:green_control/presentation/AuthorizationPages/RegistrationPage.dart';
 import 'package:green_control/presentation/GreenHousePages/AddingNewGreenHouse.dart';
-import 'package:green_control/presentation/GreenHousePages/GreenHouseInfoPage.dart';
 import 'package:green_control/presentation/HomePage/HomePage.dart';
 import 'package:green_control/presentation/OnboardingScreens/onboardPage.dart';
 import 'package:green_control/presentation/PasswordRecoveryPages/EmailFilling.dart';
-import 'package:green_control/presentation/PasswordRecoveryPages/EmailVerification.dart';
-import 'package:green_control/presentation/PlantPage/PlantPage.dart';
 import 'package:green_control/presentation/SensorPages/SensorInfoPage.dart';
 
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+  FirebaseApi().initNotifications();
   runApp(const MyApp());
 }
 

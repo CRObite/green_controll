@@ -41,8 +41,10 @@ dependencies:
   build_runner: ^2.4.7
 
   image_picker: ^1.0.7
-  firebase_core: ^2.27.0
+
   firebase_messaging: ^14.7.19
+  firebase_core: ^2.27.0
+
 
 flutter_native_splash:
   color: "#A7C957"

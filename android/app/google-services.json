@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "526821376021",
+    "project_id": "green-control-bd27b",
+    "storage_bucket": "green-control-bd27b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:526821376021:android:f072cca74900859803ce1c",
+        "android_client_info": {
+          "package_name": "com.example.green_control"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAxj-KxTFuUGSMszgazAl7dxcVY8jFbsHY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

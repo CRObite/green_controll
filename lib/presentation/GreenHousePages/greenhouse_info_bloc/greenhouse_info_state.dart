@@ -20,3 +20,12 @@ class GreenhouseInfoError extends GreenhouseInfoState {
 
   GreenhouseInfoError({required this.errorMessage});
 }
+
+
+class GreenhouseInfoTimer extends GreenhouseInfoState {
+
+  final GreenHouse gh;
+
+  GreenhouseInfoTimer({required this.gh});
+}
+

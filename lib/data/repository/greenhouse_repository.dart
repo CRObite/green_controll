@@ -1,6 +1,7 @@
 
 import 'package:dio/dio.dart';
 import 'package:green_control/domain/greenhouse/greenhouse.dart';
+import 'package:green_control/domain/greenhouse_warninig/greenhouse_warning.dart';
 
 import '../../domain/arduino/arduino.dart';
 import '../../util/AppUrl.dart';
@@ -13,7 +14,7 @@ Dio dio = Dio(
 );
 
 
-Future<List<GreenHouse>> getMyGreenHouse(String accessToken) async {
+Future<List<GreenhouseWarning>> getMyGreenHouse(String accessToken) async {
   dio.options.headers['Authorization'] = 'Bearer ${accessToken}';
 
   final response = await dio.get(
@@ -24,7 +25,7 @@ Future<List<GreenHouse>> getMyGreenHouse(String accessToken) async {
     print(response.data);
 
     List<dynamic> responseData = response.data;
-    List<GreenHouse> greenhouses = responseData.map((json) => GreenHouse.fromJson(json)).toList();
+    List<GreenhouseWarning> greenhouses = responseData.map((json) => GreenhouseWarning.fromJson(json)).toList();
 
     print(greenhouses);
 
@@ -72,7 +73,7 @@ Future<bool> crateGreenHouse(String accessToken, String name, int arduinoId) asy
   dio.options.headers['Authorization'] = 'Bearer ${accessToken}';
 
   final response = await dio.post(
-    '${AppUrls.greenhouse}',
+    '${AppUrls.greenhouses}',
     data: {
       "name": name,
       "arduino":{

@@ -79,13 +79,18 @@ class _AddingNewGreenHouseFormState extends State<AddingNewGreenHouseForm> {
   Widget build(BuildContext context) {
     return BlocListener<AddingGreenhouseBloc,AddingGreenhouseState>(
       listener: (context,state){
+        if(state is AddingGreenhouseSuccess){
+          _selectedArduino = state.arduino[0];
+          _selectedPlant = state.plants[0];
+        }
         if (state is AddingGreenhouseCrated) {
-            Navigator.of(context).pushReplacementNamed('/app');
+            Navigator.pop(context, true);
           }
         },
         child: BlocBuilder<AddingGreenhouseBloc,AddingGreenhouseState>(
               builder: (context,state){
                 if(state is AddingGreenhouseSuccess){
+
                   return SingleChildScrollView(
                     child: Column(
                       children: [
@@ -118,9 +123,14 @@ class _AddingNewGreenHouseFormState extends State<AddingNewGreenHouseForm> {
                               icon: Icon(Icons.arrow_drop_down),
                               isExpanded: true,
                               onChanged: (Arduino? newValue) {
-                                setState(() {
-                                  _selectedArduino = newValue;
-                                });
+
+                                if(newValue !=null){
+                                  print(newValue.id);
+                                  setState(() {
+                                    _selectedArduino = newValue;
+                                  });
+                                }
+
                               },
                               items: state.arduino
                                   .map<DropdownMenuItem<Arduino>>((Arduino value) {
@@ -150,9 +160,13 @@ class _AddingNewGreenHouseFormState extends State<AddingNewGreenHouseForm> {
                               icon: Icon(Icons.arrow_drop_down),
                               isExpanded: true,
                               onChanged: (Plant? newValue) {
-                                setState(() {
-                                  _selectedPlant = newValue;
-                                });
+                                if(newValue != null){
+                                  print(newValue.id);
+                                  setState(() {
+                                    _selectedPlant = newValue;
+                                  });
+                                }
+
                               },
                               items: state.plants
                                   .map<DropdownMenuItem<Plant>>((Plant value) {
@@ -168,23 +182,26 @@ class _AddingNewGreenHouseFormState extends State<AddingNewGreenHouseForm> {
 
 
 
-                        SizedBox(height: 32),
+                        SizedBox(height: 16),
                         Row(
                           children: [
                             Expanded(
-                              child: ElevatedButton(
-                                onPressed: () {
-                                  BlocProvider.of<AddingGreenhouseBloc>(context).add(
-                                    crateButtonPressed(arduino: _selectedArduino, plant: _selectedPlant, name: _nameController.text)
-                                  );
-                                },
-                                style: ElevatedButton.styleFrom(
-                                  backgroundColor: AppColors.greenColor,
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(10),
+                              child: Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: ElevatedButton(
+                                  onPressed: () {
+                                    BlocProvider.of<AddingGreenhouseBloc>(context).add(
+                                      crateButtonPressed(arduino: _selectedArduino, plant: _selectedPlant, name: _nameController.text)
+                                    );
+                                  },
+                                  style: ElevatedButton.styleFrom(
+                                    backgroundColor: AppColors.greenColor,
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(10),
+                                    ),
                                   ),
+                                  child: Text('Crate New Greenhouse', style: TextStyle(color: Colors.white),),
                                 ),
-                                child: Text('Crate New Greenhouse', style: TextStyle(color: Colors.white),),
                               ),
 
                             ),

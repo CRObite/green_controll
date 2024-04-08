@@ -19,6 +19,7 @@ class AppUrls{
 
   //greenhouse
   static String greenhouse = '$smart_greenhouse/greenhouse/';
+  static String greenhouses = '$smart_greenhouse/greenhouse';
 
   static String my_greenhouses = '$smart_greenhouse/greenhouse/my';
 

@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:green_control/data/repository/file_store_repository.dart';
 import 'package:green_control/domain/current_user.dart';
+import 'package:green_control/presentation/GreenHousePages/AddingNewGreenHouse.dart';
 import 'package:green_control/presentation/GreenHousePages/GreenHousePage.dart';
 import 'package:green_control/presentation/HomePage/HomePage.dart';
 import 'package:green_control/presentation/SensorPages/SensorPage.dart';
@@ -109,15 +110,6 @@ class _ApplicationState extends State<Application> {
           ),
         ),
       ),
-
-      floatingActionButton: _currentIndex == 0 ? FloatingActionButton(
-        onPressed: () {
-          Navigator.pushNamed(context, '/adding_new_gh');
-        },
-        backgroundColor: AppColors.greenColor,
-        child: const Icon(Icons.add, color: Colors.white,size: 50,),
-      ): null,
-      floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
     );
   }
 }

@@ -35,5 +35,25 @@ class GreenhouseInfoBloc extends Bloc<GreenhouseInfoEvent, GreenhouseInfoState> 
         }
       }
     });
+
+    on<loadByTimerGreenHouseData>((event, emit) async {
+
+      try {
+        GreenHouse? gh = await getGreenHouse(CurrentUser.currentUser!.token, event.greenhouseId);
+
+        if(gh!= null){
+          emit(GreenhouseInfoTimer(gh: gh));
+        }
+
+      } catch (e) {
+        print(e);
+        if (e is Exception) {
+          CustomException customException = CustomException.fromDioException(e);
+          print(customException.message);
+
+          emit(GreenhouseInfoError(errorMessage: customException.message));
+        }
+      }
+    });
   }
 }

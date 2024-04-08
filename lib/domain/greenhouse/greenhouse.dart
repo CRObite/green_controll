@@ -9,10 +9,9 @@ part 'greenhouse.g.dart';
 class GreenHouse{
   int id;
   String? name;
-  User? owner;
   Arduino? arduino;
 
-  GreenHouse(this.id, this.name, this.owner, this.arduino);
+  GreenHouse(this.id, this.name, this.arduino);
 
   factory GreenHouse.fromJson(Map<String, dynamic> json) => _$GreenHouseFromJson(json);
   Map<String, dynamic> toJson() => _$GreenHouseToJson(this);

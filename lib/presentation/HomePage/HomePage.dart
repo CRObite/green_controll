@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:green_control/domain/greenhouse/greenhouse.dart';
@@ -8,6 +10,7 @@ import 'package:green_control/presentation/Widgets/ImageBuilder.dart';
 import 'package:green_control/util/AppColors.dart';
 
 import '../../domain/plants/plant.dart';
+import '../GreenHousePages/GreenHouseInfoPage.dart';
 import '../PlantPage/PlantPage.dart';
 
 class HomePage extends StatefulWidget {
@@ -37,7 +40,6 @@ class HomeForm extends StatefulWidget {
 }
 
 class _HomeFormState extends State<HomeForm> {
-
 
   @override
   void initState() {
@@ -194,7 +196,10 @@ class _HomeFormState extends State<HomeForm> {
       padding: const EdgeInsets.all(8.0),
       child: GestureDetector(
         onTap: () {
-          Navigator.pushNamed(context, '/gh_info');
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => GreenHouseInfo(greenhouseId: gh.id)),
+          );
         },
         child: Container(
           decoration: BoxDecoration(

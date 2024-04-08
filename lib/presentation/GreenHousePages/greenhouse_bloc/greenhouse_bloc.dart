@@ -7,6 +7,7 @@ import 'package:meta/meta.dart';
 
 import '../../../config/custom_exeption.dart';
 import '../../../domain/current_user.dart';
+import '../../../domain/greenhouse_warninig/greenhouse_warning.dart';
 
 part 'greenhouse_event.dart';
 part 'greenhouse_state.dart';
@@ -22,7 +23,8 @@ class GreenhouseBloc extends Bloc<GreenhouseEvent, GreenhouseState> {
 
       try {
 
-        ghs = await getMyGreenHouse(CurrentUser.currentUser!.token);
+        List<GreenhouseWarning> greenhouseWarnings = await getMyGreenHouse(CurrentUser.currentUser!.token);
+        ghs = greenhouseWarnings.map((e) => e.greenhouse).toList();
 
         emit(GreenhouseSuccess(ghs));
 

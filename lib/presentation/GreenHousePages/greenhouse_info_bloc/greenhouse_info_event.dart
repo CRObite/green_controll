@@ -8,3 +8,9 @@ class loadGreenHouseData extends GreenhouseInfoEvent{
 
   loadGreenHouseData(this.greenhouseId);
 }
+
+class loadByTimerGreenHouseData extends GreenhouseInfoEvent{
+  final int greenhouseId;
+
+  loadByTimerGreenHouseData(this.greenhouseId);
+}

@@ -51,10 +51,6 @@ class _SensorInfoPageState extends State<SensorInfoPage> {
 
             HalfRoundedContainer(title: 'Current Parameters', color: AppColors.greenColor, textColor: Colors.white,),
 
-            const Padding(
-              padding: EdgeInsets.all(16.0),
-              child: CurrentParameters(),
-            ),
           ],
         ),
       ),

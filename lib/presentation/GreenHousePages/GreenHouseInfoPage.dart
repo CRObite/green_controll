@@ -64,129 +64,97 @@ class GreenHouseInfoForm extends StatefulWidget {
 
 class _GreenHouseInfoFormState extends State<GreenHouseInfoForm> {
 
-  late Timer _timer;
-  late StreamController<GreenHouse> _streamController;
 
   @override
   void initState() {
-    _streamController = StreamController<GreenHouse>();
+
     BlocProvider.of<GreenhouseInfoBloc>(context).add(
       loadGreenHouseData(widget.greenhouseId),
     );
-
-
-    _timer = Timer.periodic(Duration(seconds: 5), (timer) {
-      BlocProvider.of<GreenhouseInfoBloc>(context).add(
-        loadByTimerGreenHouseData(widget.greenhouseId),
-      );
-    });
-
 
     super.initState();
   }
 
 
-  @override
-  void dispose() {
-    _streamController.close();
-    _timer.cancel();
-    super.dispose();
-  }
 
   @override
   Widget build(BuildContext context) {
-    return BlocListener<GreenhouseInfoBloc,GreenhouseInfoState>(
-        listener: (context, state) {
-          if(state is GreenhouseInfoTimer){
-            _streamController.add(state.gh);
-          }
-        },
-        child: BlocBuilder<GreenhouseInfoBloc,GreenhouseInfoState>(
-              builder: (context,state){
-                if(state is GreenhouseInfoSuccess){
-                  return SingleChildScrollView(
-                    child: Column(
-                      children: [
-                        HalfRoundedContainer(title: state.gh.name ?? '???', color: AppColors.greenColor, textColor: Colors.white,),
-                        const SizedBox(height: 16,),
-                        Padding(
-                          padding: EdgeInsets.only(left: 32),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Expanded(
-                                child: Column(
-                                  mainAxisSize: MainAxisSize.min,
-                                  children: [
-                                    Text('GreenHouse plants',style: TextStyle(fontSize: 16),),
-                                    SizedBox(height: 8,),
-                                    Card(
-                                      child: Padding(
-                                        padding: EdgeInsets.all(8.0),
-                                        child: Text('${state.gh.arduino!.plant!.name}'),
-                                      ),
-                                    )
-                                  ],
-                                ),
-                              ),
-                              Expanded(
-                                child: Column(
-                                  mainAxisSize: MainAxisSize.min,
-                                  children: [
-                                    Text('GreenHouse sensor',style: TextStyle(fontSize: 16),),
-                                    SizedBox(height: 8,),
-                                    Card(
-                                      child: Padding(
-                                        padding: EdgeInsets.all(8.0),
-                                        child: Text('Arduino ${state.gh.arduino!.id}'),
-                                      ),
-                                    )
-                                  ],
-                                ),
-                              ),
-                            ],
+    return BlocBuilder<GreenhouseInfoBloc,GreenhouseInfoState>(
+          builder: (context,state){
+            if(state is GreenhouseInfoSuccess){
+              return SingleChildScrollView(
+                child: Column(
+                  children: [
+                    HalfRoundedContainer(title: state.gh.name ?? '???', color: AppColors.greenColor, textColor: Colors.white,),
+                    const SizedBox(height: 16,),
+                    Padding(
+                      padding: EdgeInsets.only(left: 32),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Expanded(
+                            child: Column(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                Text('GreenHouse plants',style: TextStyle(fontSize: 16),),
+                                SizedBox(height: 8,),
+                                Card(
+                                  child: Padding(
+                                    padding: EdgeInsets.all(8.0),
+                                    child: Text('${state.gh.arduino!.plant!.name}'),
+                                  ),
+                                )
+                              ],
+                            ),
                           ),
-                        ),
-
-                        const SizedBox(height: 16,),
-
-                        HalfRoundedContainer(
-                            title:'Current Parameters',
-                            color: AppColors.greenColor,
-                            textColor: Colors.white
-                        ),
-                        const SizedBox(height: 8,),
-
-                        Padding(
-                            padding: EdgeInsets.only(left: 32, right: 32),
-                            child: StreamBuilder<GreenHouse>(
-                              stream: _streamController.stream,
-                              builder: (context,snapshot){
-                                if(snapshot.hasData){
-                                  return CurrentParameters(arduino: snapshot.data!.arduino!);
-                                }else{
-                                  return SizedBox();
-                                }
-                              },
-                            )
-                        ),
-
-                      ],
+                          Expanded(
+                            child: Column(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                Text('GreenHouse sensor',style: TextStyle(fontSize: 16),),
+                                SizedBox(height: 8,),
+                                Card(
+                                  child: Padding(
+                                    padding: EdgeInsets.all(8.0),
+                                    child: Text('Arduino ${state.gh.arduino!.id}'),
+                                  ),
+                                )
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
-                  );
-                }else if(state is GreenhouseInfoLoading){
-                  return Center(
-                    child: CircularProgressIndicator(),
-                  );
-                }else if(state is GreenhouseInfoError){
-                  return Center(
-                    child: Text(state.errorMessage),
-                  );
-                }else{
-                  return Container();
-                }
-              }
-          ),
+
+                    const SizedBox(height: 16,),
+
+                    HalfRoundedContainer(
+                        title:'Current Parameters',
+                        color: AppColors.greenColor,
+                        textColor: Colors.white
+                    ),
+                    const SizedBox(height: 8,),
+
+                    Padding(
+                        padding: EdgeInsets.only(left: 32, right: 32),
+                        child: CurrentParameters(arduinoId: state.gh.arduino!.id)
+                    ),
+
+                  ],
+                ),
+              );
+            }else if(state is GreenhouseInfoLoading){
+              return Center(
+                child: CircularProgressIndicator(),
+              );
+            }else if(state is GreenhouseInfoError){
+              return Center(
+                child: Text(state.errorMessage),
+              );
+            }else{
+              return Container();
+            }
+          }
       );
   }
 }

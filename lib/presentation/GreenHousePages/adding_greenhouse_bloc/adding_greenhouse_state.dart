@@ -16,6 +16,7 @@ class AddingGreenhouseSuccess extends AddingGreenhouseState {
 }
 
 class AddingGreenhouseCrated extends AddingGreenhouseState {}
+class AddingGreenhouseEdited extends AddingGreenhouseState {}
 
 
 class AddingGreenhouseError extends AddingGreenhouseState {

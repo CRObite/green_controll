@@ -174,7 +174,7 @@ class _RegisterFormState extends State<RegisterForm> {
                         
                                   if (state is RegisterError)
                                     Text(
-                                      state.errorMessage ?? '',
+                                      state.errorMessage,
                                       style: TextStyle(color: Colors.red, fontSize: 16),
                                     ),
                                   const SizedBox(

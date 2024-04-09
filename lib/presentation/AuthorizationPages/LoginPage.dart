@@ -1,16 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:green_control/config/validation.dart';
-import 'package:green_control/data/repository/auth_repository.dart';
-import 'package:green_control/domain/user/user.dart';
 import 'package:green_control/presentation/AuthorizationPages/login_bloc/login_bloc.dart';
 import 'package:green_control/presentation/Widgets/CustomTextField.dart';
 import 'package:green_control/util/AppColors.dart';
 import 'package:green_control/util/AppImage.dart';
 import 'package:green_control/util/AppText.dart';
 import 'package:green_control/config/SharedPreferencesOperator.dart';
-import 'package:green_control/util/currentUser.dart';
+
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -164,7 +161,7 @@ class _LoginFormState extends State<LoginForm> {
                               ),
                               if (state is LoginError)
                                 Text(
-                                  state.errorMessage ?? '',
+                                  state.errorMessage ,
                                   style: TextStyle(color: Colors.red, fontSize: 16),
                                 ),
                               const SizedBox(

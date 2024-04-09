@@ -153,7 +153,7 @@ class _EmailVerificationFormState extends State<EmailVerificationForm> {
                                 const SizedBox(height: 16,),
                                 if (state is EmailVerificationError)
                                   Text(
-                                    state.errorMessage ?? '',
+                                    state.errorMessage,
                                     style: TextStyle(color: Colors.red, fontSize: 16),
                                   ),
                                 const SizedBox(

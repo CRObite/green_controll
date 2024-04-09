@@ -35,7 +35,6 @@ class _MyAppState extends State<MyApp> {
     '/recover': (context) => const EmailFilling(),
     '/home': (context) => const HomePage(),
     '/app': (context) => const Application(),
-    '/adding_new_gh': (context) => const AddingNewGreenHouse(),
     '/sensor_info': (context) => const SensorInfoPage(),
   };
 

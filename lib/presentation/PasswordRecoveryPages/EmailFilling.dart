@@ -122,7 +122,7 @@ class _EmailFillingFormState extends State<EmailFillingForm> {
                                 const SizedBox(height: 16,),
                                 if (state is EmailFillingError)
                                   Text(
-                                    state.errorMessage ?? '',
+                                    state.errorMessage ,
                                     style: TextStyle(color: Colors.red, fontSize: 16),
                                   ),
                                 const SizedBox(

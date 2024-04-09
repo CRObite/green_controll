@@ -2,8 +2,6 @@
 import 'package:dio/dio.dart';
 import 'package:green_control/domain/greenhouse/greenhouse.dart';
 import 'package:green_control/domain/greenhouse_warninig/greenhouse_warning.dart';
-
-import '../../domain/arduino/arduino.dart';
 import '../../util/AppUrl.dart';
 
 Dio dio = Dio(
@@ -91,3 +89,25 @@ Future<bool> crateGreenHouse(String accessToken, String name, int arduinoId) asy
   }
 }
 
+Future<bool> editGreenHouse(String accessToken,int greenhouseId, String name, int arduinoId) async {
+  dio.options.headers['Authorization'] = 'Bearer ${accessToken}';
+
+  final response = await dio.put(
+      '${AppUrls.greenhouses}',
+      data: {
+        "id": greenhouseId,
+        "name": name,
+        "arduino":{
+          "id":arduinoId
+        }
+      }
+  );
+
+  if (response.statusCode == 200) {
+    print(response.data);
+
+    return true;
+  }else{
+    return false;
+  }
+}

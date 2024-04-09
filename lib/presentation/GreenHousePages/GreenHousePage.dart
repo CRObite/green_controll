@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:green_control/domain/arduino/arduino.dart';
+import 'package:green_control/domain/plants/plant.dart';
 import 'package:green_control/presentation/GreenHousePages/GreenHouseInfoPage.dart';
 import 'package:green_control/presentation/GreenHousePages/greenhouse_bloc/greenhouse_bloc.dart';
-import 'package:green_control/presentation/HomePage/HomePage.dart';
-
+import 'package:green_control/util/greenhouse_action_type_enum.dart';
 import '../../util/AppColors.dart';
 import '../Widgets/CustomShadow.dart';
 import '../Widgets/LongTextField.dart';
@@ -43,6 +44,22 @@ class _GreenhouseFormState extends State<GreenhouseForm> {
       loadAllGreenhouseData(),
     );
     super.initState();
+  }
+
+  Future<void> goToNext(String name, Arduino? arduino, Plant? plant,GreenhouseActionTypeEnum type, int greenhouseId) async {
+    final result = await Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => AddingNewGreenHouse(
+        name: name, arduino: arduino, plant: plant,actionType: type, greenhouseId: greenhouseId,
+      )),
+    );
+
+
+    if (result != null && result == true) {
+      BlocProvider.of<GreenhouseBloc>(context).add(
+        loadAllGreenhouseData(),
+      );
+    }
   }
 
 
@@ -169,7 +186,12 @@ class _GreenhouseFormState extends State<GreenhouseForm> {
                                               ),
                                               child: IconButton(
                                                 onPressed: () {
-
+                                                  goToNext(state.ghs[index].name!,
+                                                      state.ghs[index].arduino,
+                                                      state.ghs[index].arduino!.plant,
+                                                      GreenhouseActionTypeEnum.edit,
+                                                      state.ghs[index].id
+                                                  );
                                                 },
                                                 icon: const Icon(
                                                   Icons.edit,
@@ -225,17 +247,7 @@ class _GreenhouseFormState extends State<GreenhouseForm> {
 
       floatingActionButton: FloatingActionButton(
         onPressed: () async {
-          final result = await Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => AddingNewGreenHouse()),
-          );
-
-
-          if (result != null && result == true) {
-            BlocProvider.of<GreenhouseBloc>(context).add(
-              loadAllGreenhouseData(),
-            );
-          }
+          goToNext('',null,null, GreenhouseActionTypeEnum.create,0);
         },
         backgroundColor: AppColors.greenColor,
         child: const Icon(Icons.add, color: Colors.white,size: 50,),

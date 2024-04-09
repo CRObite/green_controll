@@ -76,5 +76,44 @@ class AddingGreenhouseBloc extends Bloc<AddingGreenhouseEvent, AddingGreenhouseS
       }
 
     });
+
+
+    on<editButtonPressed>((event, emit) async {
+      emit(AddingGreenhouseLoading());
+
+      try {
+
+        if(event.arduino != null && event.plant!= null && event.name.isNotEmpty){
+          bool plantSet = await  setPlantToArduino(CurrentUser.currentUser!.token, event.arduino!.id, event.plant!.id);
+          if(plantSet){
+
+            bool greenHouseWasEdited = await editGreenHouse(CurrentUser.currentUser!.token,event.greenhouseId,event.name,event.arduino!.id);
+
+            if(greenHouseWasEdited){
+              emit(AddingGreenhouseEdited());
+            }else{
+              print('Greenhouse Wasnt Edited');
+            }
+
+          }else{
+            print('Arduino Wasnt Set');
+          }
+        } else{
+          emit(AddingGreenhouseError(errorMessage: 'Fill and select all fields'));
+        }
+
+
+      } catch (e) {
+        print(e);
+        if (e is Exception) {
+          CustomException customException = CustomException.fromDioException(e);
+          print(customException.message);
+
+          emit(AddingGreenhouseError(errorMessage: customException.message));
+        }
+      }
+
+    });
+
   }
 }

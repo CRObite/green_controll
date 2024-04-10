@@ -12,7 +12,10 @@ Dio dio = Dio(
 );
 
 
-Future<User?> loginUser(String email, String password) async {
+Future<User?> loginUser(String email, String password, String device_id) async {
+
+  dio.options.headers['device_id'] = device_id;
+
 
   final response = await dio.post(
       '${AppUrls.sign_in}',

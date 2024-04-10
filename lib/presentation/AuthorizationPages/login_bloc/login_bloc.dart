@@ -1,6 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:green_control/config/validation.dart';
 import 'package:green_control/domain/current_user.dart';
+import 'package:green_control/domain/device_id.dart';
 import 'package:meta/meta.dart';
 
 import '../../../config/custom_exeption.dart';
@@ -19,7 +20,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
       String? validation = validateRequiredFields([event.email,event.password]);
       if (validation == null) {
         try {
-          final user = await loginUser(event.email, event.password);
+          final user = await loginUser(event.email, event.password, DeviceData.device_id!);
           if (user != null) {
             CurrentUser.currentUser = user;
             emit(LoginSuccess(user: user));

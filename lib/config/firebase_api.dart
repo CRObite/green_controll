@@ -1,4 +1,5 @@
 import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:green_control/domain/device_id.dart';
 
 class FirebaseApi{
   final _firebaseMessaging = FirebaseMessaging.instance;
@@ -8,6 +9,7 @@ class FirebaseApi{
     final fcmToken = await _firebaseMessaging.getToken();
 
     print('Token: $fcmToken');
+    DeviceData.device_id = fcmToken;
 
     FirebaseMessaging.onBackgroundMessage(handleBackgroundMessage);
   }

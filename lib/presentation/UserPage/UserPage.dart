@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:green_control/presentation/UserPage/user_bloc/user_bloc.dart';
 import '../../domain/current_user.dart';
 import '../../util/AppColors.dart';
+import '../Widgets/char_builder.dart';
 
 class UserPage extends StatefulWidget {
   const UserPage({super.key});
@@ -181,7 +182,7 @@ class _UserFormState extends State<UserForm> {
 
                   SizedBox(height: 32,),
 
-
+                  ChartBuilder(),
 
                   Row(
                     children: [

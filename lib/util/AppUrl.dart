@@ -33,4 +33,11 @@ class AppUrls{
   static String upload_file = '$file_store/file/upload';
 
 
+  //logger
+  static String logger = '$gateway/logger';
+
+  static String logger_arduino_id = '$gateway/logger';
+
+
+
 }

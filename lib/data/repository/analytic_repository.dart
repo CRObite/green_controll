@@ -1,7 +1,5 @@
-
 import 'package:dio/dio.dart';
-import 'package:green_control/domain/arduino/arduino.dart';
-
+import 'package:green_control/domain/analytic/analytic.dart';
 import '../../util/AppUrl.dart';
 
 Dio dio = Dio(
@@ -12,24 +10,22 @@ Dio dio = Dio(
 );
 
 
-Future<List<Arduino>> getAllArduino(String accessToken) async {
+Future<Analytic?> getAnalyticById(String accessToken,int arduinoId) async {
   dio.options.headers['Authorization'] = 'Bearer ${accessToken}';
 
   final response = await dio.get(
-    '${AppUrls.arduino}',
+    '${AppUrls.logger_arduino_id}$arduinoId${AppUrls.weekly_averages}',
   );
 
   if (response.statusCode == 200) {
     print(response.data);
 
-    List<dynamic> responseData = response.data['items'];
-    List<Arduino> arduinos = responseData.map((json) => Arduino.fromJson(json))
-        .toList();
+    Analytic analytic = Analytic.fromJson(response.data);
 
-    print(arduinos);
+    print(analytic);
 
-    return arduinos;
+    return analytic;
   } else {
-    return [];
+    return null;
   }
 }

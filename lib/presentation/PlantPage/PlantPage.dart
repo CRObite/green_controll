@@ -77,8 +77,8 @@ class _PlantFormState extends State<PlantForm> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Container(
-                        width: MediaQuery.of(context).size.width * 0.7,
-                        height: MediaQuery.of(context).size.height * 0.4,
+                        width: MediaQuery.of(context).size.width * 0.5,
+                        height: MediaQuery.of(context).size.height * 0.3,
                         decoration: BoxDecoration(
                           color: AppColors.greenColor,
                           borderRadius: BorderRadius.only(
@@ -104,10 +104,10 @@ class _PlantFormState extends State<PlantForm> {
                             SizedBox(height: 16,),
                             state.bytes != null ?
                             CircleAvatar(
-                              radius: MediaQuery.of(context).size.width * 0.25,
+                              radius: MediaQuery.of(context).size.width * 0.2,
                               backgroundImage: MemoryImage(state.bytes!),
                             ): CircleAvatar(
-                              radius: MediaQuery.of(context).size.width * 0.25,
+                              radius: MediaQuery.of(context).size.width * 0.2,
                               backgroundColor: Colors.grey,
                             ),
                           ],
@@ -130,7 +130,8 @@ class _PlantFormState extends State<PlantForm> {
                       childAspectRatio: 2,
                       children: [
                         gridItem('Optimal Temperature', '${state.plant.minimumTemperature?.toInt()}-${state.plant.maximumTemperature?.toInt()}'),
-                        gridItem('Optimal Humidity', '${state.plant.minimumHumidity?.toInt()}-${state.plant.maximumHumidity?.toInt()}'),
+                        gridItem('Optimal Air Humidity', '${state.plant.minimumHumidityAir?.toInt()}-${state.plant.maximumHumidityAir?.toInt()}'),
+                        gridItem('Optimal Ground Humidity', '${state.plant.minimumHumidityGround?.toInt()}-${state.plant.maximumHumidityGround?.toInt()}'),
                         gridItem('Optimal Lighting ', '${state.plant.minimumLight?.toInt()}-${state.plant.maximumLight?.toInt()}'),
                         gridItem('Optimal CO2 Level', '${state.plant.minimumCarbonDioxide?.toInt()}-${state.plant.maximumCarbonDioxide?.toInt()}'),
                       ],

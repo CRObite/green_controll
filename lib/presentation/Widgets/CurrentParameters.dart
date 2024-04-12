@@ -24,7 +24,7 @@ class _CurrentParametersState extends State<CurrentParameters> {
   @override
   void initState() {
     super.initState();
-    parameters = ['Temperature', 'Humidity', 'Light', 'Carbon Dioxide'];
+    parameters = ['Temperature', 'Air Humidity','Ground Humidity', 'Light', 'Carbon Dioxide'];
 
     currentParametersCubit.loadArduinoParameterData(widget.arduinoId);
 
@@ -44,10 +44,12 @@ class _CurrentParametersState extends State<CurrentParameters> {
       case 0:
         return _isWithinRange(arduino.temperature,arduino.plant!.minimumTemperature, arduino.plant!.maximumTemperature);
       case 1:
-        return _isWithinRange(arduino.humidity, arduino.plant!.minimumHumidity, arduino.plant!.maximumHumidity);
+        return _isWithinRange(arduino.humidityAir, arduino.plant!.minimumHumidityAir, arduino.plant!.maximumHumidityAir);
       case 2:
-        return _isWithinRange(arduino.light, arduino.plant!.minimumLight, arduino.plant!.maximumLight);
+        return _isWithinRange(arduino.humidityGround, arduino.plant!.minimumHumidityGround, arduino.plant!.maximumHumidityGround);
       case 3:
+        return _isWithinRange(arduino.light, arduino.plant!.minimumLight, arduino.plant!.maximumLight);
+      case 4:
         return _isWithinRange(arduino.carbonDioxide, arduino.plant!.minimumCarbonDioxide, arduino.plant!.maximumCarbonDioxide);
       default:
         return false;
@@ -59,10 +61,12 @@ class _CurrentParametersState extends State<CurrentParameters> {
       case 0:
         return 'The temperature should be in the range of ${arduino.plant!.minimumTemperature} to ${arduino.plant!.maximumTemperature}';
       case 1:
-        return  'The humidity should be in the range of ${arduino.plant!.minimumHumidity} to ${arduino.plant!.maximumHumidity}';
+        return  'The humidity should be in the range of ${arduino.plant!.minimumHumidityAir} to ${arduino.plant!.maximumHumidityAir}';
       case 2:
-        return 'The light should be in the range of ${arduino.plant!.minimumLight} to ${arduino.plant!.maximumLight}';
+        return  'The humidity should be in the range of ${arduino.plant!.minimumHumidityGround} to ${arduino.plant!.maximumHumidityGround}';
       case 3:
+        return 'The light should be in the range of ${arduino.plant!.minimumLight} to ${arduino.plant!.maximumLight}';
+      case 4:
         return 'The carbon dioxide should be in the range of ${arduino.plant!.minimumCarbonDioxide} to ${arduino.plant!.maximumCarbonDioxide}';
       default:
         return '';
@@ -165,10 +169,12 @@ class _CurrentParametersState extends State<CurrentParameters> {
       case 0:
         return '${arduino.temperature}';
       case 1:
-        return '${arduino.humidity}';
+        return '${arduino.humidityAir}';
       case 2:
-        return '${arduino.light}';
+        return '${arduino.humidityGround}';
       case 3:
+        return '${arduino.light}';
+      case 4:
         return '${arduino.carbonDioxide}';
       default:
         return '';

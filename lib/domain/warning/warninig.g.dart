@@ -7,10 +7,10 @@ part of 'warninig.dart';
 // **************************************************************************
 
 Warning _$WarningFromJson(Map<String, dynamic> json) => Warning(
-      json['optimalTemperature'] as bool,
-      json['optimalHumidity'] as bool,
-      json['optimalLight'] as bool,
-      json['optimalCarbonDioxide'] as bool,
+      json['optimalTemperature'] as bool?,
+      json['optimalHumidity'] as bool?,
+      json['optimalLight'] as bool?,
+      json['optimalCarbonDioxide'] as bool?,
     );
 
 Map<String, dynamic> _$WarningToJson(Warning instance) => <String, dynamic>{

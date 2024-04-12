@@ -10,7 +10,8 @@ class UserLoading extends UserState {}
 class UserSuccess extends UserState {
 
   final List<GreenHouse> ghs;
-  final  Uint8List? image;
+  final Uint8List? image;
+
   UserSuccess(this.ghs, this.image);
 }
 
@@ -19,7 +20,13 @@ class UserAvatarLoaded extends UserState {
   final  Uint8List? image;
 
   UserAvatarLoaded(this.image);
+}
 
+class AnalyticLoaded extends UserState {
+
+  final  Analytic analytic;
+
+  AnalyticLoaded(this.analytic);
 }
 
 

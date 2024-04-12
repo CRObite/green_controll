@@ -12,8 +12,10 @@ class Plant{
   String? imageUrl;
   double? minimumTemperature;
   double? maximumTemperature;
-  double? minimumHumidity;
-  double? maximumHumidity;
+  double? minimumHumidityAir;
+  double? maximumHumidityAir;
+  double? minimumHumidityGround;
+  double? maximumHumidityGround;
   double? minimumLight;
   double? maximumLight;
   double? minimumCarbonDioxide;
@@ -27,13 +29,14 @@ class Plant{
       this.imageUrl,
       this.minimumTemperature,
       this.maximumTemperature,
-      this.minimumHumidity,
-      this.maximumHumidity,
+      this.minimumHumidityAir,
+      this.maximumHumidityAir,
+      this.minimumHumidityGround,
+      this.maximumHumidityGround,
       this.minimumLight,
       this.maximumLight,
       this.minimumCarbonDioxide,
       this.maximumCarbonDioxide);
-
 
   factory Plant.fromJson(Map<String, dynamic> json) => _$PlantFromJson(json);
   Map<String, dynamic> toJson() => _$PlantToJson(this);

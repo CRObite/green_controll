@@ -34,9 +34,10 @@ class AppUrls{
 
 
   //logger
-  static String logger = '$gateway/logger';
+  static String logger = '$smart_greenhouse/logger';
 
-  static String logger_arduino_id = '$gateway/logger';
+  static String logger_arduino_id = '$logger/arduino/';
+  static String weekly_averages = '/weekly-averages';
 
 
 

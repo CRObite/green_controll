@@ -4,12 +4,14 @@ import 'dart:typed_data';
 import 'package:bloc/bloc.dart';
 import 'package:green_control/data/repository/auth_repository.dart';
 import 'package:green_control/data/repository/file_store_repository.dart';
+import 'package:green_control/domain/analytic/analytic.dart';
 import 'package:green_control/domain/greenhouse/greenhouse.dart';
 import 'package:green_control/domain/greenhouse_warninig/greenhouse_warning.dart';
 import 'package:meta/meta.dart';
 
 import '../../../config/custom_exeption.dart';
 import '../../../config/get_image.dart';
+import '../../../data/repository/analytic_repository.dart';
 import '../../../data/repository/greenhouse_repository.dart';
 import '../../../domain/current_user.dart';
 
@@ -26,6 +28,7 @@ class UserBloc extends Bloc<UserEvent, UserState> {
         List<GreenhouseWarning> greenhouseWarnings = await getMyGreenHouse(CurrentUser.currentUser!.token);
         List<GreenHouse>ghs = greenhouseWarnings.map((e) => e.greenhouse).toList();
         Uint8List? image = await downloadFile(CurrentUser.currentUser!.token, CurrentUser.currentUser!.profilePicture);
+
         emit(UserSuccess(ghs,image));
 
       } catch (e) {
@@ -70,5 +73,6 @@ class UserBloc extends Bloc<UserEvent, UserState> {
         }
       }
     });
+
   }
 }

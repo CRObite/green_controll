@@ -5,10 +5,10 @@ part 'warninig.g.dart';
 
 @JsonSerializable()
 class Warning{
-  bool optimalTemperature;
-  bool optimalHumidity;
-  bool optimalLight;
-  bool optimalCarbonDioxide;
+  bool? optimalTemperature;
+  bool? optimalHumidity;
+  bool? optimalLight;
+  bool? optimalCarbonDioxide;
 
 
   Warning(this.optimalTemperature, this.optimalHumidity, this.optimalLight,

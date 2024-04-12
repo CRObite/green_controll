@@ -9,7 +9,8 @@ part of 'arduino.dart';
 Arduino _$ArduinoFromJson(Map<String, dynamic> json) => Arduino(
       json['id'] as int,
       (json['temperature'] as num?)?.toDouble(),
-      (json['humidity'] as num?)?.toDouble(),
+      (json['humidityAir'] as num?)?.toDouble(),
+      (json['humidityGround'] as num?)?.toDouble(),
       (json['light'] as num?)?.toDouble(),
       (json['carbonDioxide'] as num?)?.toDouble(),
       json['plant'] == null
@@ -20,7 +21,8 @@ Arduino _$ArduinoFromJson(Map<String, dynamic> json) => Arduino(
 Map<String, dynamic> _$ArduinoToJson(Arduino instance) => <String, dynamic>{
       'id': instance.id,
       'temperature': instance.temperature,
-      'humidity': instance.humidity,
+      'humidityAir': instance.humidityAir,
+      'humidityGround': instance.humidityGround,
       'light': instance.light,
       'carbonDioxide': instance.carbonDioxide,
       'plant': instance.plant,

@@ -1,4 +1,3 @@
-import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:green_control/data/repository/plants_repository.dart';
@@ -46,11 +45,23 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     List<GreenHouse> filteredGreenHouses = [];
 
     for (var greenhouseWarning in greenhouseWarnings) {
-      if (!greenhouseWarning.warning.optimalTemperature ||
-          !greenhouseWarning.warning.optimalHumidity ||
-          !greenhouseWarning.warning.optimalLight ||
-          !greenhouseWarning.warning.optimalCarbonDioxide) {
-        filteredGreenHouses.add(greenhouseWarning.greenhouse);
+
+      if(greenhouseWarning.warning.optimalTemperature != null){
+        if(!greenhouseWarning.warning.optimalTemperature!){
+          filteredGreenHouses.add(greenhouseWarning.greenhouse);
+        }
+      }else if(greenhouseWarning.warning.optimalHumidity != null){
+        if(!greenhouseWarning.warning.optimalHumidity!){
+          filteredGreenHouses.add(greenhouseWarning.greenhouse);
+        }
+      }else if(greenhouseWarning.warning.optimalLight != null){
+        if(!greenhouseWarning.warning.optimalLight!){
+          filteredGreenHouses.add(greenhouseWarning.greenhouse);
+        }
+      }else if(greenhouseWarning.warning.optimalCarbonDioxide != null){
+        if(!greenhouseWarning.warning.optimalCarbonDioxide!){
+          filteredGreenHouses.add(greenhouseWarning.greenhouse);
+        }
       }
     }
 

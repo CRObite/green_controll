@@ -7,14 +7,15 @@ part 'arduino.g.dart';
 class Arduino{
   int id;
   double? temperature;
-  double? humidity;
+  double? humidityAir;
+  double? humidityGround;
   double? light;
   double? carbonDioxide;
   Plant? plant;
 
 
-  Arduino(this.id, this.temperature, this.humidity, this.light,
-      this.carbonDioxide, this.plant);
+  Arduino(this.id, this.temperature, this.humidityAir, this.humidityGround,
+      this.light, this.carbonDioxide, this.plant);
 
   factory Arduino.fromJson(Map<String, dynamic> json) => _$ArduinoFromJson(json);
   Map<String, dynamic> toJson() => _$ArduinoToJson(this);

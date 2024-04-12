@@ -11,7 +11,11 @@ class GreenHouse{
   String? name;
   Arduino? arduino;
 
-  GreenHouse(this.id, this.name, this.arduino);
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  bool isExpanded;
+
+
+  GreenHouse(this.id, this.name, this.arduino,{this.isExpanded = false});
 
   factory GreenHouse.fromJson(Map<String, dynamic> json) => _$GreenHouseFromJson(json);
   Map<String, dynamic> toJson() => _$GreenHouseToJson(this);

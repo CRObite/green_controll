@@ -86,19 +86,19 @@ class _GreenhouseFormState extends State<GreenhouseForm> {
           return SingleChildScrollView(
               child: Column(
             children: [
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Row(
-                  children: [
-                    Expanded(
-                      child: LongTextField(
-                          type: TextInputType.text,
-                          hintText: 'Green House Name',
-                          controller: _editingController),
-                    )
-                  ],
-                ),
-              ),
+              // Padding(
+              //   padding: const EdgeInsets.all(8.0),
+              //   child: Row(
+              //     children: [
+              //       Expanded(
+              //         child: LongTextField(
+              //             type: TextInputType.text,
+              //             hintText: 'Green House Name',
+              //             controller: _editingController),
+              //       )
+              //     ],
+              //   ),
+              // ),
               const SizedBox(
                 width: 16,
               ),

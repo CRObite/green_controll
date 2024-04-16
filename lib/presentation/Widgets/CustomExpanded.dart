@@ -69,9 +69,7 @@ class _CustomExpandedState extends State<CustomExpanded> {
         }
 
         if (value != null) {
-
-          double roundedValue = double.parse(value.toStringAsFixed(1));
-          scores.add(roundedValue);
+          scores.add(value);
         } else {
           scores.add(0.0);
         }
@@ -81,6 +79,41 @@ class _CustomExpandedState extends State<CustomExpanded> {
     return scores;
   }
 
+  double? getMinValue(int index, int type) {
+    switch (type) {
+      case 0:
+        return widget.ghs[index].arduino?.plant?.minimumTemperature;
+      case 1:
+        return widget.ghs[index].arduino?.plant?.minimumHumidityAir;
+      case 2:
+        return widget.ghs[index].arduino?.plant?.minimumHumidityGround;
+      case 3:
+        return widget.ghs[index].arduino?.plant?.minimumLight;
+      case 4:
+        return widget.ghs[index].arduino?.plant?.minimumCarbonDioxide;
+      default:
+        return null;
+    }
+  }
+
+  double? getMaxValue(int index, int type) {
+    switch (type) {
+      case 0:
+        return widget.ghs[index].arduino?.plant?.maximumTemperature;
+      case 1:
+        return widget.ghs[index].arduino?.plant?.maximumHumidityAir;
+      case 2:
+        return widget.ghs[index].arduino?.plant?.maximumCarbonDioxide;
+      case 3:
+        return widget.ghs[index].arduino?.plant?.maximumLight;
+      case 4:
+        return widget.ghs[index].arduino?.plant?.maximumCarbonDioxide;
+      default:
+        return null;
+    }
+  }
+
+  int? selected;
 
   @override
   Widget build(BuildContext context) {
@@ -94,6 +127,8 @@ class _CustomExpandedState extends State<CustomExpanded> {
               expansionCallback: (int index, bool isExpanded) {
 
                 if(isExpanded){
+                  selected = index;
+
                   customExpandedCubit.loadAnalyticsData(widget.ghs[index].arduino!.id);
                 }
 
@@ -190,6 +225,8 @@ class _CustomExpandedState extends State<CustomExpanded> {
                                       ChartBuilder(
                                         dates: getAllDates(state.analytic, index),
                                         positions: getAllValues(state.analytic, index),
+                                        minimalOptimal: getMinValue(selected ?? 0, index),
+                                        maximalOptimal: getMaxValue(selected ?? 0, index),
                                       ),
                                     ],
                                   ),

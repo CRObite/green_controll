@@ -3,8 +3,11 @@ import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 
 class ChartBuilder extends StatelessWidget {
-  const ChartBuilder({super.key, required this.positions, required this.dates});
+  const ChartBuilder({super.key, required this.positions, required this.dates, required this.minimalOptimal, required this.maximalOptimal});
 
+
+  final double? minimalOptimal;
+  final double? maximalOptimal;
   final List<double?> positions;
   final List<String?> dates;
 
@@ -33,6 +36,16 @@ class ChartBuilder extends StatelessWidget {
           sideTitles: SideTitles(showTitles: false)
       ),
       topTitles: AxisTitles(
+          axisNameWidget: Container(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text('Min optimal: ${minimalOptimal ?? 0.0}'),
+                Text('Max optimal: ${maximalOptimal ?? 0.0}'),
+              ],
+            ),
+          ),
+          axisNameSize: 24,
           sideTitles: SideTitles(showTitles: false)
       ),
       leftTitles: AxisTitles(
@@ -50,6 +63,7 @@ class ChartBuilder extends StatelessWidget {
     if(max!= null && min!= null && max != 0){
       interval = (max - min)/positions.length;
     }
+
 
     return SideTitles(
       getTitlesWidget: leftTitleWidget,
@@ -115,7 +129,7 @@ class ChartBuilder extends StatelessWidget {
         fontWeight: FontWeight.bold,
         color: Colors.grey
     );
-    String text = '$value';
+    String text = '${value.toInt()}';
 
     return Text(text, style: style,);
   }

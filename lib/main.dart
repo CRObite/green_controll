@@ -10,6 +10,7 @@ import 'package:green_control/presentation/HomePage/HomePage.dart';
 import 'package:green_control/presentation/OnboardingScreens/onboardPage.dart';
 import 'package:green_control/presentation/PasswordRecoveryPages/EmailFilling.dart';
 import 'package:green_control/presentation/SensorPages/SensorInfoPage.dart';
+import 'package:green_control/presentation/error_page.dart';
 
 
 void main() async {

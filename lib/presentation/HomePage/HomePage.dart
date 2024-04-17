@@ -11,6 +11,7 @@ import 'package:green_control/util/AppColors.dart';
 import '../../domain/plants/plant.dart';
 import '../GreenHousePages/GreenHouseInfoPage.dart';
 import '../PlantPage/PlantPage.dart';
+import '../error_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -48,6 +49,12 @@ class _HomeFormState extends State<HomeForm> {
     super.initState();
   }
 
+  void onTryAgainPressed(){
+    BlocProvider.of<HomeBloc>(context).add(
+      loadAllData(),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<HomeBloc, HomeState>(
@@ -57,7 +64,7 @@ class _HomeFormState extends State<HomeForm> {
         } else if (state is HomeSuccess) {
           return _buildSuccessState(state);
         } else if (state is HomeError) {
-          return _buildErrorState(state);
+          return ErrorPage(onTryAgainPressed:onTryAgainPressed);
         } else {
           return Container(); // Default empty container
         }
@@ -82,12 +89,6 @@ class _HomeFormState extends State<HomeForm> {
           _buildWarningsSection(state),
         ],
       ),
-    );
-  }
-
-  Widget _buildErrorState(HomeError state) {
-    return Center(
-      child: Text(state.errorMessage),
     );
   }
 

@@ -8,6 +8,7 @@ import 'package:green_control/presentation/GreenHousePages/adding_greenhouse_blo
 
 import 'package:green_control/presentation/Widgets/HalfRoundedContainer.dart';
 import 'package:green_control/presentation/Widgets/LongTextField.dart';
+import 'package:green_control/presentation/error_page.dart';
 import 'package:green_control/util/AppColors.dart';
 import 'package:green_control/util/greenhouse_action_type_enum.dart';
 
@@ -96,6 +97,12 @@ class _AddingNewGreenHouseFormState extends State<AddingNewGreenHouseForm> {
   void dispose() {
     _nameController.dispose();
     super.dispose();
+  }
+
+  void onTryAgainPressed(){
+    BlocProvider.of<AddingGreenhouseBloc>(context).add(
+      loadPlantAndArduinoData(),
+    );
   }
 
   @override
@@ -273,9 +280,7 @@ class _AddingNewGreenHouseFormState extends State<AddingNewGreenHouseForm> {
                     child: CircularProgressIndicator(),
                   );
                 }else if (state is AddingGreenhouseError) {
-                  return Center(
-                    child: Text(state.errorMessage),
-                  );
+                  return ErrorPage(onTryAgainPressed:onTryAgainPressed);
                 }else {
                   return Container();
                 }

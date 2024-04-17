@@ -8,6 +8,7 @@ import 'package:green_control/util/greenhouse_action_type_enum.dart';
 import '../../util/AppColors.dart';
 import '../Widgets/CustomShadow.dart';
 import '../Widgets/LongTextField.dart';
+import '../error_page.dart';
 import 'AddingNewGreenHouse.dart';
 
 class GreenHouse extends StatefulWidget {
@@ -62,6 +63,11 @@ class _GreenhouseFormState extends State<GreenhouseForm> {
     }
   }
 
+  void onTryAgainPressed(){
+    BlocProvider.of<GreenhouseBloc>(context).add(
+      loadAllGreenhouseData(),
+    );
+  }
 
   @override
   void dispose() {
@@ -79,9 +85,7 @@ class _GreenhouseFormState extends State<GreenhouseForm> {
             child: CircularProgressIndicator(),
           );
         } else if (state is GreenhouseError) {
-          return Center(
-            child: Text(state.errorMessage),
-          );
+          return ErrorPage(onTryAgainPressed:onTryAgainPressed);
         } else if (state is GreenhouseSuccess) {
           return SingleChildScrollView(
               child: Column(

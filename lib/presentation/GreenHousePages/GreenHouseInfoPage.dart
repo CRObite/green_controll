@@ -7,6 +7,7 @@ import 'package:green_control/presentation/Widgets/CurrentParameters.dart';
 import 'package:green_control/presentation/Widgets/HalfRoundedContainer.dart';
 import 'package:green_control/util/AppColors.dart';
 
+import '../error_page.dart';
 import 'greenhouse_info_bloc/greenhouse_info_bloc.dart';
 
 class GreenHouseInfo extends StatefulWidget {
@@ -66,15 +67,17 @@ class _GreenHouseInfoFormState extends State<GreenHouseInfoForm> {
 
   @override
   void initState() {
-
     BlocProvider.of<GreenhouseInfoBloc>(context).add(
       loadGreenHouseData(widget.greenhouseId),
     );
-
     super.initState();
   }
 
-
+  void onTryAgainPressed(){
+    BlocProvider.of<GreenhouseInfoBloc>(context).add(
+      loadGreenHouseData(widget.greenhouseId),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -147,9 +150,7 @@ class _GreenHouseInfoFormState extends State<GreenHouseInfoForm> {
                 child: CircularProgressIndicator(),
               );
             }else if(state is GreenhouseInfoError){
-              return Center(
-                child: Text(state.errorMessage),
-              );
+              return ErrorPage(onTryAgainPressed:onTryAgainPressed);
             }else{
               return Container();
             }

@@ -11,6 +11,7 @@ import '../../domain/analytic/analytic.dart';
 import '../../domain/current_user.dart';
 import '../../util/AppColors.dart';
 import '../Widgets/char_builder.dart';
+import '../error_page.dart';
 
 class UserPage extends StatefulWidget {
   const UserPage({super.key});
@@ -50,6 +51,13 @@ class _UserFormState extends State<UserForm> {
       loadUsersGreenhouseData(),
     );
     super.initState();
+  }
+
+
+  void onTryAgainPressed(){
+    BlocProvider.of<UserBloc>(context).add(
+      loadUsersGreenhouseData(),
+    );
   }
 
 
@@ -177,7 +185,7 @@ class _UserFormState extends State<UserForm> {
             }else if(state is UserLoading){
               return _buildLoadingState();
             }else if(state is UserError){
-              return _buildErrorState(state);
+              return ErrorPage(onTryAgainPressed:onTryAgainPressed);
             }else{
               return Container();
             }
@@ -193,11 +201,6 @@ class _UserFormState extends State<UserForm> {
     );
   }
 
-  Widget _buildErrorState(UserError state) {
-    return Center(
-      child: Text(state.errorMessage),
-    );
-  }
 }
 
 

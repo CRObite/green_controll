@@ -15,6 +15,9 @@ Future<List<Plant>> getPlants(String accessToken) async {
 
   final response = await dio.get(
       '${AppUrls.plants}',
+      queryParameters: {
+        "size": 25,
+      }
   );
 
   if (response.statusCode == 200) {

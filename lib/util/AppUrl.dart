@@ -1,5 +1,5 @@
 class AppUrls{
-  static String address = 'http://192.168.71.123:8090';  // set current address
+  static String address = 'http://192.168.1.5:8090';  // set current address
   static String gateway = '$address/gateway';
 
   //auth

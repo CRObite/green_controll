@@ -5,6 +5,8 @@ import 'package:green_control/presentation/PlantPage/plant_bloc/plant_bloc.dart'
 import 'package:green_control/util/AppColors.dart';
 import 'package:green_control/util/box_shadow.dart';
 
+import '../error_page.dart';
+
 class PlantPage extends StatefulWidget {
   const PlantPage({super.key, required this.plantId});
 
@@ -61,6 +63,13 @@ class _PlantFormState extends State<PlantForm> {
       loadPlantData(widget.plantId),
     );
     super.initState();
+  }
+
+
+  void onTryAgainPressed(){
+    BlocProvider.of<PlantBloc>(context).add(
+      loadPlantData(widget.plantId),
+    );
   }
 
   @override
@@ -163,7 +172,7 @@ class _PlantFormState extends State<PlantForm> {
           }else if(state is PlantLoading){
             return _buildLoadingState();
           }else if(state is PlantError){
-            return _buildErrorState(state);
+            return ErrorPage(onTryAgainPressed:onTryAgainPressed);
           }else{
             return Container();
           }
@@ -198,11 +207,6 @@ class _PlantFormState extends State<PlantForm> {
     );
   }
 
-  Widget _buildErrorState(PlantError state) {
-    return Center(
-      child: Text(state.errorMessage),
-    );
-  }
 
 
 }

@@ -91,14 +91,7 @@ flutter:
     - assets/leaf.jpg
     - assets/background.jpg
     - assets/background2.jpg
-    - assets/Plants/asparagus.jpg
-    - assets/Plants/carrots.jpg
-    - assets/Plants/eggplant.jpg
-    - assets/Plants/kale.jpg
-    - assets/Plants/onion.jpg
-    - assets/Plants/spinach.jpg
-    - assets/Plants/strawberry.jpg
-    - assets/Plants/turnip.jpg
+    - assets/error_plant_image.jpg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

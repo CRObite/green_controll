@@ -28,7 +28,7 @@ class _CurrentParametersState extends State<CurrentParameters> {
 
     currentParametersCubit.loadArduinoParameterData(widget.arduinoId);
 
-    _timer = Timer.periodic(Duration(seconds: 5), (timer) {
+    _timer = Timer.periodic(Duration(seconds: 2), (timer) {
       currentParametersCubit.loadArduinoParameterData(widget.arduinoId);
     });
   }

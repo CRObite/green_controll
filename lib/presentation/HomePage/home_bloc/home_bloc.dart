@@ -49,19 +49,38 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
       if(greenhouseWarning.warning.optimalTemperature != null){
         if(!greenhouseWarning.warning.optimalTemperature!){
           filteredGreenHouses.add(greenhouseWarning.greenhouse);
+          continue;
         }
-      }else if(greenhouseWarning.warning.optimalHumidity != null){
-        if(!greenhouseWarning.warning.optimalHumidity!){
+
+      }
+
+      if(greenhouseWarning.warning.optimalHumidityAir != null){
+        if(!greenhouseWarning.warning.optimalHumidityAir!){
           filteredGreenHouses.add(greenhouseWarning.greenhouse);
+          continue;
         }
-      }else if(greenhouseWarning.warning.optimalLight != null){
+
+      }
+      if(greenhouseWarning.warning.optimalHumidityGround != null){
+        if(!greenhouseWarning.warning.optimalHumidityGround!){
+          filteredGreenHouses.add(greenhouseWarning.greenhouse);
+          continue;
+        }
+
+      }
+      if(greenhouseWarning.warning.optimalLight != null){
         if(!greenhouseWarning.warning.optimalLight!){
           filteredGreenHouses.add(greenhouseWarning.greenhouse);
+          continue;
         }
-      }else if(greenhouseWarning.warning.optimalCarbonDioxide != null){
+
+      }
+      if(greenhouseWarning.warning.optimalCarbonDioxide != null){
         if(!greenhouseWarning.warning.optimalCarbonDioxide!){
           filteredGreenHouses.add(greenhouseWarning.greenhouse);
+          continue;
         }
+
       }
     }
 

@@ -8,14 +8,16 @@ part of 'warninig.dart';
 
 Warning _$WarningFromJson(Map<String, dynamic> json) => Warning(
       json['optimalTemperature'] as bool?,
-      json['optimalHumidity'] as bool?,
+      json['optimalHumidityAir'] as bool?,
+      json['optimalHumidityGround'] as bool?,
       json['optimalLight'] as bool?,
       json['optimalCarbonDioxide'] as bool?,
     );
 
 Map<String, dynamic> _$WarningToJson(Warning instance) => <String, dynamic>{
       'optimalTemperature': instance.optimalTemperature,
-      'optimalHumidity': instance.optimalHumidity,
+      'optimalHumidityAir': instance.optimalHumidityAir,
+      'optimalHumidityGround': instance.optimalHumidityGround,
       'optimalLight': instance.optimalLight,
       'optimalCarbonDioxide': instance.optimalCarbonDioxide,
     };

@@ -10,3 +10,9 @@ class deleteGreenhouseData extends GreenhouseEvent{
 
   deleteGreenhouseData({required this.ghId});
 }
+
+class searchGreenHouses extends GreenhouseEvent{
+  final String ghName;
+
+  searchGreenHouses(this.ghName);
+}

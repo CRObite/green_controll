@@ -2,11 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:green_control/util/AppColors.dart';
 
 class LongTextField extends StatefulWidget {
-  const LongTextField({super.key, required this.type, required this.hintText, required this.controller});
+  const LongTextField({super.key, required this.type, required this.hintText, required this.controller, this.onChange});
 
   final TextInputType type;
   final String hintText;
   final TextEditingController controller;
+  final void Function(String)? onChange;
 
   @override
   State<LongTextField> createState() => _LongTextFieldState();
@@ -18,6 +19,11 @@ class _LongTextFieldState extends State<LongTextField> {
   @override
   Widget build(BuildContext context) {
     return TextField(
+      onChanged: (String? value){
+        if(value!= null && widget.onChange != null){
+          widget.onChange!(value);
+        }
+      },
       controller: widget.controller,
       obscureText: widget.type == TextInputType.visiblePassword
           ? obscureText

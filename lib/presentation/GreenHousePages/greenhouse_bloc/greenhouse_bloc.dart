@@ -39,6 +39,15 @@ class GreenhouseBloc extends Bloc<GreenhouseEvent, GreenhouseState> {
       }
     });
 
+
+    on<searchGreenHouses>((event, emit) async {
+
+      List<GreenHouse> filteredGreenhouses = ghs.where((greenhouse) => greenhouse.name!.contains(event.ghName)).toList();
+
+      emit(GreenhouseSuccess(filteredGreenhouses));
+
+    });
+
     on<deleteGreenhouseData>((event, emit) async {
       emit(GreenhouseLoading()); 
 

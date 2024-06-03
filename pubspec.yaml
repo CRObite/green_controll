@@ -43,9 +43,9 @@ dependencies:
   image_picker: ^1.0.7
 
   firebase_messaging: ^14.7.19
-  firebase_core: ^2.27.0
   fl_chart: ^0.67.0
   intl: ^0.19.0
+  firebase_core: ^2.25.0
 
 
 flutter_native_splash:

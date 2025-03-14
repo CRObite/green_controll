@@ -1,16 +1,40 @@
-# green_control
+# Green Control
 
-A new Flutter project.
+# Green Control — мобильное приложение для управления и мониторинга умной теплицы. Позволяет отслеживать статусы теплиц, получать данные о растениях и получать уведомления об ошибках.
 
-## Getting Started
+# 📱 Возможности
 
-This project is a starting point for a Flutter application.
+Мониторинг теплиц: Просмотр статуса всех теплиц в реальном времени.
 
-A few resources to get you started if this is your first Flutter project:
+Данные о растениях: Получение информации о состоянии растений.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+Уведомления: Получение push-уведомлений о критических событиях и ошибках.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+# 🚀 Технологии
+
+Проект разработан с использованием:
+
+Flutter (SDK: '>=3.0.6 <4.0.0')
+
+flutter_bloc — управление состоянием
+
+firebase_messaging — push-уведомления
+
+json_serializable — сериализация данных
+
+# 🔧 Установка и запуск
+
+Клонируйте репозиторий:
+
+git clone https://github.com/your-repo/green_control.git
+cd green_control
+
+Установите зависимости:
+
+flutter pub get
+
+Запустите приложение:
+
+flutter run
+
+
